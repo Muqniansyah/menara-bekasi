@@ -1,24 +1,54 @@
-<nav class="w-full bg-white shadow-sm fixed top-0 left-0 z-50">
-    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-start gap-10">
+<nav id="navbar" class="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-8 py-6 transition-all duration-300">
 
-        <!-- Logo -->
-        <a href="/" class="flex items-center">
-            <img src="{{ asset('images/logo.png') }}" alt="Logo" class="h-12 w-auto">
-        </a>
+    <!-- Empty (biar logo tetap center) -->
+    <div class="w-8"></div>
 
-        <!-- Navigation -->
-        <div class="flex items-center gap-6 text-gray-700 font-medium">
-            <a href="/" class="hover:text-black transition">Beranda</a>
-            <a href="/tentang-kami" class="hover:text-black transition">Tentang</a>
-            <a href="/blog" class="hover:text-black transition">Blog</a>
-            <a href="/produk" class="hover:text-black transition">Produk</a>
-            <a href="/kontak" class="hover:text-black transition">Kontak</a>
-        </div>
-
-        <!-- Login Button -->
-        <a href="/login"
-            class="ml-auto px-5 py-2 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition">
-            Login
-        </a>
+    <!-- Logo Center -->
+    <div class="flex justify-center w-full absolute left-0 right-0 pointer-events-none">
+        <img src="{{ asset('images/navbar.png') }}" class="w-12 pointer-events-auto">
     </div>
+
+    <!-- Hamburger Button -->
+    <button id="menuBtn" class="text-3xl font-light z-[1000] cursor-pointer">
+        ☰
+    </button>
 </nav>
+
+<!-- FULLSCREEN MENU OVERLAY -->
+<div id="menuOverlay"
+    class="fixed inset-0 bg-white z-[999] translate-y-[100vh] transition-transform duration-500 flex flex-col items-center pt-24">
+
+    <!-- Close Button -->
+    <button id="closeBtn" class="absolute top-8 right-8 text-4xl font-light z-[1001] cursor-pointer">
+        ×
+    </button>
+
+    <!-- Logo -->
+    <img src="{{ asset('images/logo.png') }}" class="w-16 mb-10">
+
+    <!-- MENU LIST -->
+    <div class="flex flex-col items-center space-y-8">
+
+        @php
+        $menus = [
+        ['title' => 'BERANDA', 'url' => '/'],
+        ['title' => 'TENTANG', 'url' => '/tentang'],
+        ['title' => 'BLOG', 'url' => '/blog'],
+        ['title' => 'PRODUK', 'url' => '/produk'],
+        ['title' => 'KONTAK', 'url' => '/kontak'],
+        ];
+        @endphp
+
+        @foreach ($menus as $menu)
+        <a href="{{ $menu['url'] }}"
+            class="text-2xl tracking-widest relative group">
+            {{ $menu['title'] }}
+
+            <!-- garis hover -->
+            <span
+                class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[1px] bg-yellow-600 transition-all duration-300 group-hover:w-full">
+            </span>
+        </a>
+        @endforeach
+    </div>
+</div>

@@ -3,11 +3,6 @@
     <!-- Empty (biar logo tetap center) -->
     <div class="w-8"></div>
 
-    <!-- Logo Center -->
-    <div class="flex justify-center w-full absolute left-0 right-0 pointer-events-none">
-        <img src="{{ asset('images/navbar.png') }}" class="w-12 pointer-events-auto">
-    </div>
-
     <!-- Hamburger Button -->
     <button id="menuBtn" class="text-3xl font-light z-[1000] cursor-pointer">
         ☰

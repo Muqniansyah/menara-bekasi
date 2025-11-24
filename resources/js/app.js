@@ -18,6 +18,23 @@ document.addEventListener("DOMContentLoaded", () => {
 import Swiper from "swiper/bundle";
 import "swiper/css/bundle";
 
+const swiper = new Swiper(".recentSwiper", {
+    slidesPerView: 1,
+    spaceBetween: 20,
+    loop: true,
+
+    breakpoints: {
+        640: { slidesPerView: 2 },
+        1024: { slidesPerView: 3 },
+        1280: { slidesPerView: 4 },
+    },
+
+    navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+    },
+});
+
 // navbar
 const menuBtn = document.getElementById("menuBtn");
 const closeBtn = document.getElementById("closeBtn");

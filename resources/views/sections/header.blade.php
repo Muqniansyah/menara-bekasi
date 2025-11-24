@@ -16,7 +16,7 @@
         </h1>
 
         <p class="font-['Inter'] text-base md:text-lg opacity-90 mb-8">
-            Menara Bekasi menghadirkan kualitas terbaik dengan sentuhan klasik dan modern,
+            PT. Menara Bekasi menghadirkan kualitas terbaik dengan sentuhan klasik dan modern,
             menghadirkan estetika kayu yang elegan untuk setiap kebutuhan Anda.
         </p>
 
@@ -38,7 +38,7 @@
 
         <div class="blob-wrapper relative w-[260px] h-[260px] md:w-[420px] md:h-[420px]">
             <img
-                src="{{ asset('images/header.jpeg') }}"
+                src="{{ asset('images/logo.png') }}"
                 alt="Header Image"
                 class="w-full h-full object-cover 
                 rounded-[40%_60%_70%_30%/30%_40%_60%_70%] shadow-2xl">

@@ -14,7 +14,7 @@
             <h3 class="text-lg font-semibold mb-4 font-['Inter']">Lokasi & Kontak</h3>
 
             <p class="text-sm text-white/80 font-['Inter'] leading-relaxed mb-4">
-                Jl. Raya Industri No. 123<br>
+                Jl. WR. Supratman RT 02 RW 06<br>
                 Bekasi, Jawa Barat<br>
                 Indonesia
             </p>

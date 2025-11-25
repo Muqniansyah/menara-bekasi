@@ -4,5 +4,6 @@
 @include('sections.header')
 @include('sections.tentang')
 @include('sections.faq')
+@include('sections.produk')
 @include('sections.trend')
 @endsection

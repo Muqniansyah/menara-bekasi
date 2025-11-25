@@ -31,84 +31,211 @@
 
 {{-- CONTENT SECTION --}}
 <section class="w-full max-w-6xl mx-auto py-14 px-5 md:px-0">
-
-    {{-- Judul Seksi --}}
-    <h2 class="text-3xl md:text-4xl font-['Playfair_Display'] font-semibold text-center mb-10">
-        PT. Menara Bekasi
-    </h2>
-
-    {{-- GRID UTAMA --}}
+    {{-- GRID PERTAMA --}}
     <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-
-        {{-- GAMBAR PERUSAHAAN --}}
+        {{-- VIDEO PERUSAHAAN --}}
         <div class="w-full">
-            <img
-                src="{{ asset('images/tentang.jpeg') }}"
-                alt="Tentang Perusahaan"
-                class="w-full h-72 md:h-96 object-cover rounded-lg shadow-md">
+            <video
+                class="w-full h-72 md:h-96 object-cover rounded-lg shadow-md"
+                autoplay
+                muted
+                loop
+                playsinline>
+                <source src="{{ asset('images/tentang/menara.mp4') }}" type="video/mp4">
+            </video>
         </div>
 
         {{-- TEKS PROFIL --}}
-        <div class="space-y-5 text-gray-700 leading-relaxed text-justify">
+        <div class="space-y-5 text-gray-700 leading-relaxed">
+            <h3 class="text-2xl md:text-3xl font-['Playfair_Display'] font-semibold">
+                Pemasok Kemasan Kayu Indonesia Bersertifikat ISPM 15
+            </h3>
+
             <p>
-                <strong>PT. Menara Bekasi</strong> adalah perusahaan terdaftar di Badan Karantina Pertanian Indonesia
-                dengan nomor registrasi <strong>ID-139</strong>, berfokus pada penyediaan layanan kemasan kayu
-                berstandar internasional ISPM 15 untuk kebutuhan ekspor.
+                <strong>PT. Menara Bekasi</strong> adalah perusahaan resmi terdaftar di Badan Karantina Pertanian
+                dengan nomor registrasi <strong>ID-139</strong>, fokus pada layanan kemasan kayu untuk kebutuhan ekspor
+                dengan standar internasional ISPM 15.
             </p>
 
             <p>
-                Kami memproduksi beragam kemasan kayu seperti pallet kayu, dunnage, peti kayu, wooden box,
-                dan plywood packaging, lengkap dengan sertifikasi ISPM 15 yang memenuhi standar global.
+                Kami memproduksi pallet kayu, dunnage, peti kayu, wooden box, dan plywood packaging yang telah
+                memenuhi standar global dan siap digunakan untuk pengiriman internasional.
             </p>
 
             <p>
-                Selain produksi, kami menyediakan layanan menyeluruh: mulai dari pemilihan bahan baku,
-                proses perlakuan, produksi, penyimpanan, pengangkutan, pembubuhan cap ISPM 15,
-                hingga pengawasan penggunaan serta pencegahan reinfestasi OPT dalam proses pengapalan.
-            </p>
-
-            <p>
-                Dengan komitmen pada kualitas, PT. Menara Bekasi terus mengembangkan pelayanan untuk menjadi
-                perusahaan kemasan kayu dan sertifikasi ISPM 15 yang terpercaya dan bertaraf internasional.
+                Layanan kami mencakup seluruh proses: pemilihan bahan baku, perlakuan ISPM 15, produksi,
+                penyimpanan, distribusi, pembubuhan cap ISPM 15, hingga pengawasan pencegahan reinfestasi OPT.
             </p>
         </div>
     </div>
 
-    {{-- VISI & MISI --}}
-    <div class="mt-16">
+    {{-- GRID KEDUA --}}
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center mt-16">
+        {{-- TEKS PROFIL (KIRI) --}}
+        <div class="space-y-5 text-gray-700 leading-relaxed order-2 md:order-1">
+            <h3 class="text-2xl md:text-3xl font-['Playfair_Display'] font-semibold">
+                Layanan Heat Treatment Profesional & Pengemasan Kayu
+            </h3>
 
-        <h3 class="text-2xl md:text-3xl font-['Playfair_Display'] font-semibold mb-6 text-center">
-            Visi & Misi Perusahaan
-        </h3>
+            <p>
+                PT. Menara Bekasi menyediakan layanan perlakuan panas (Heat Treatment) bersertifikat ISPM 15
+                untuk menjamin seluruh kemasan kayu memenuhi standar internasional dan aman untuk pengiriman ekspor.
+            </p>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <p>
+                Dengan fasilitas modern dan tenaga ahli berpengalaman, kami memastikan proses HT berlangsung
+                tepat suhu, tepat waktu, dan sesuai regulasi Badan Karantina Pertanian.
+            </p>
 
-            {{-- VISI --}}
-            <div class="p-6 border rounded-lg shadow-sm bg-white">
-                <h4 class="text-xl font-semibold mb-3 font-['Playfair_Display']">Visi</h4>
-                <p class="text-gray-700 leading-relaxed">
-                    Menjadi perusahaan penyedia kemasan kayu berstandar internasional yang terpercaya
-                    dan mendukung kelancaran ekspor melalui penerapan standar ISPM 15 secara profesional.
+            <p>
+                Keamanan, kualitas, dan kepatuhan adalah prioritas utama kami dalam setiap proses layanan.
+            </p>
+        </div>
+
+        {{-- VIDEO PERUSAHAAN (KANAN) --}}
+        <div class="w-full order-1 md:order-2">
+            <video
+                class="w-full h-72 md:h-96 object-cover rounded-lg shadow-md"
+                autoplay
+                muted
+                loop
+                playsinline>
+                <source src="{{ asset('images/tentang/layanan.mp4') }}" type="video/mp4">
+            </video>
+        </div>
+    </div>
+
+    {{-- VISI & MISI (DESAIN BARU) --}}
+    <div class="mt-20">
+        {{-- VISI --}}
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 bg-[#f4f0e6] p-10 rounded-xl">
+            {{-- Judul Visi --}}
+            <div>
+                <span class="text-xs tracking-wide border px-3 py-1 rounded-full">
+                    VISI KAMI
+                </span>
+
+                <h3 class="mt-4 text-3xl md:text-4xl font-semibold leading-tight"
+                    style="font-family:'Playfair Display', serif;">
+                    Visi Perusahaan<br>PT. Menara Bekasi
+                </h3>
+            </div>
+
+            {{-- Isi Visi --}}
+            <div class="flex items-center">
+                <p class="text-gray-700 leading-relaxed text-lg">
+                    Menjadi penyedia kemasan kayu berstandar internasional yang terpercaya
+                    dan mendukung kelancaran ekspor global melalui penerapan standar ISPM 15.
                 </p>
             </div>
-
-            {{-- MISI --}}
-            <div class="p-6 border rounded-lg shadow-sm bg-white">
-                <h4 class="text-xl font-semibold mb-3 font-['Playfair_Display']">Misi</h4>
-                <ul class="list-disc list-inside text-gray-700 space-y-2 leading-relaxed">
-                    <li>Menerapkan standar ISPM 15 secara konsisten pada seluruh proses perlakuan dan produksi.</li>
-                    <li>Memberikan layanan berkualitas dari pemilihan bahan baku hingga pengiriman.</li>
-                    <li>Menjamin keamanan dan kepatuhan regulasi pada setiap kemasan ekspor.</li>
-                    <li>Meningkatkan kompetensi tim melalui sistem manajemen mutu.</li>
-                    <li>Membangun kerja sama dan kepercayaan dengan pihak terkait.</li>
-                    <li>Mengembangkan inovasi dalam produksi dan perlakuan kemasan kayu.</li>
-                </ul>
-            </div>
-
         </div>
 
-    </div>
+        {{-- MISI (VERSI RESMI + GARIS PEMBATAS) --}}
+        <div class="mt-16 bg-[#f4f0e6] p-10 rounded-xl">
+            <span class="text-xs tracking-wide border px-3 py-1 rounded-full">
+                MISI KAMI
+            </span>
 
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mt-6">
+                {{-- Judul --}}
+                <div>
+                    <h3 class="text-3xl md:text-4xl font-semibold leading-tight"
+                        style="font-family:'Playfair Display', serif;">
+                        Misi Perusahaan PT. Menara Bekasi
+                    </h3>
+                </div>
+
+                {{-- Daftar Misi --}}
+                <div class="space-y-8 text-gray-700">
+                    {{-- 1 --}}
+                    <div>
+                        <div class="flex gap-4">
+                            <span class="text-2xl font-semibold"
+                                style="font-family:'Playfair Display', serif;">1.</span>
+                            <p>Menerapkan standar ISPM 15 secara konsisten pada seluruh proses perlakuan dan produksi kemasan kayu.</p>
+                        </div>
+                        <div class="border-b border-gray-300 mt-4"></div>
+                    </div>
+
+                    {{-- 2 --}}
+                    <div>
+                        <div class="flex gap-4">
+                            <span class="text-2xl font-semibold"
+                                style="font-family:'Playfair Display', serif;">2.</span>
+                            <p>Memberikan layanan berkualitas tinggi mulai dari seleksi bahan baku hingga pengiriman kemasan kayu ke pelanggan.</p>
+                        </div>
+                        <div class="border-b border-gray-300 mt-4"></div>
+                    </div>
+
+                    {{-- 3 --}}
+                    <div>
+                        <div class="flex gap-4">
+                            <span class="text-2xl font-semibold"
+                                style="font-family:'Playfair Display', serif;">3.</span>
+                            <p>Menjamin keamanan dan kepatuhan regulasi untuk setiap kemasan kayu yang digunakan dalam perdagangan internasional.</p>
+                        </div>
+                        <div class="border-b border-gray-300 mt-4"></div>
+                    </div>
+
+                    {{-- 4 --}}
+                    <div>
+                        <div class="flex gap-4">
+                            <span class="text-2xl font-semibold"
+                                style="font-family:'Playfair Display', serif;">4.</span>
+                            <p>Meningkatkan kompetensi tim melalui pelatihan, pengembangan, dan penerapan sistem manajemen mutu.</p>
+                        </div>
+                        <div class="border-b border-gray-300 mt-4"></div>
+                    </div>
+
+                    {{-- 5 --}}
+                    <div>
+                        <div class="flex gap-4">
+                            <span class="text-2xl font-semibold"
+                                style="font-family:'Playfair Display', serif;">5.</span>
+                            <p>Membangun kerja sama dan kepercayaan dengan pelanggan, pemerintah, dan mitra usaha.</p>
+                        </div>
+                        <div class="border-b border-gray-300 mt-4"></div>
+                    </div>
+
+                    {{-- 6 --}}
+                    <div>
+                        <div class="flex gap-4">
+                            <span class="text-2xl font-semibold"
+                                style="font-family:'Playfair Display', serif;">6.</span>
+                            <p>Mengembangkan inovasi dalam proses produksi, perlakuan, dan teknologi untuk menciptakan kemasan kayu yang aman, efisien, dan ramah lingkungan.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
+<section class="py-20">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold font-['Playfair_Display'] text-center mb-10">
+            Galeri Proyek & Produksi
+        </h2>
+
+        <div class="columns-1 sm:columns-2 md:columns-3 gap-4 space-y-4">
+
+            @foreach ([
+            'galeri/galeri-1.jpeg',
+            'galeri/galeri-2.jpeg',
+            'galeri/galeri-3.jpeg',
+            'galeri/galeri-4.jpeg',
+            'galeri/galeri-5.jpg',
+            'galeri/galeri-6.jpg'
+            ] as $foto)
+
+            <div class="break-inside-avoid overflow-hidden rounded-xl shadow">
+                <img
+                    src="{{ asset('images/' . $foto) }}"
+                    class="w-full h-auto object-cover hover:opacity-80 transition">
+            </div>
+
+            @endforeach
+        </div>
+    </div>
+</section>
 @endsection

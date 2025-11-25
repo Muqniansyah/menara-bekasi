@@ -1,5 +1,50 @@
 import "./bootstrap";
 
+// produk
+window.productDetail = function () {
+    return {
+        active: null,
+        activeId: null,
+
+        showDetail(data) {
+            this.active = data;
+            this.activeId = data.id;
+
+            // scroll ke grid produk, bukan ke bawah halaman
+            setTimeout(() => {
+                const target = document.querySelector("#produk-container");
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start",
+                    });
+                }
+            }, 50);
+        },
+
+        shareWA() {
+            window.open(
+                `https://wa.me/?text=${encodeURIComponent(
+                    this.active.title + " - " + window.location.href
+                )}`
+            );
+        },
+
+        shareFB() {
+            window.open(
+                `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+                    window.location.href
+                )}`
+            );
+        },
+
+        copyLink() {
+            navigator.clipboard.writeText(window.location.href);
+            alert("Link berhasil disalin!");
+        },
+    };
+};
+
 // alpine js
 import Alpine from "alpinejs";
 

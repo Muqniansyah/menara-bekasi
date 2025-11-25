@@ -21,10 +21,12 @@
         </p>
 
         <a
-            href="#"
+            href="https://wa.me/6285817298071"
+            target="_blank"
+            rel="noopener noreferrer"
             class="inline-block bg-[#C8A27A] text-white px-8 py-3 rounded-xl font-['Inter'] font-medium 
             shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-            Lihat Produk
+            Hubungi Sekarang
         </a>
     </div>
 

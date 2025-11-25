@@ -1,4 +1,4 @@
-<section class="py-20 bg-white">
+<section class="py-20 bg-[#F9F8F6]">
     <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-14">
         <!-- LEFT FAQ SECTION -->
         <div>
@@ -34,21 +34,35 @@
         </div>
 
         <!-- RIGHT IMAGE COLLAGE -->
-        <div class="relative h-full flex items-center justify-center">
-            <!-- Image 1 -->
-            <img src="{{ asset('images/faq/faq-1.jpeg') }}"
-                class="absolute top-0 left-1/4 w-40 h-48 rounded-sm shadow-lg
-               -translate-x-6 translate-y-4 z-1 object-cover">
+        <div class="relative flex items-center justify-center self-start">
 
-            <!-- Image 2 -->
-            <img src="{{ asset('images/faq/faq-2.jpeg') }}"
-                class="absolute top-30 right-6 w-48 h-56 rounded-sm shadow-lg
-               translate-x-4 -translate-y-4 z-2 object-cover">
+            <!-- MOBILE VERSION (STACKED IMAGES) -->
+            <div class="md:hidden flex flex-col gap-4 w-full items-center mt-6">
+                <img src="{{ asset('images/faq/faq-1.jpeg') }}" class="w-48 h-56 rounded shadow-lg object-cover">
+                <img src="{{ asset('images/faq/faq-2.jpeg') }}" class="w-48 h-56 rounded shadow-lg object-cover">
+                <img src="{{ asset('images/faq/faq-3.jpeg') }}" class="w-56 h-64 rounded shadow-lg object-cover">
+            </div>
 
-            <!-- Image 3 (large bottom) -->
-            <img src="{{ asset('images/faq/faq-3.jpeg') }}"
-                class="absolute bottom-0 left-1/2 w-64 h-72 rounded-sm shadow-lg
-               -translate-x-1/2 translate-y-6 z-3 object-cover">
+            <!-- DESKTOP VERSION (FIXED HEIGHT) -->
+            <div class="hidden md:block relative w-full h-[450px]">
+
+                <!-- Image 1 -->
+                <img src="{{ asset('images/faq/faq-1.jpeg') }}"
+                    class="absolute top-0 left-1/4 w-40 h-48 rounded-sm shadow-lg
+                    -translate-x-6 translate-y-4 z-10 object-cover">
+
+                <!-- Image 2 -->
+                <img src="{{ asset('images/faq/faq-2.jpeg') }}"
+                    class="absolute top-28 right-6 w-48 h-56 rounded-sm shadow-lg
+                    translate-x-4 -translate-y-4 z-20 object-cover">
+
+                <!-- Image 3 -->
+                <img src="{{ asset('images/faq/faq-3.jpeg') }}"
+                    class="absolute bottom-0 left-1/2 w-64 h-72 rounded-sm shadow-lg
+                    -translate-x-1/2 translate-y-6 z-30 object-cover">
+
+            </div>
         </div>
+
     </div>
 </section>

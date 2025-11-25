@@ -29,4 +29,28 @@
     </div>
 </section>
 
+<div x-data="{ open: false }">
+
+    <!-- Floating WA Button -->
+    <button @click="open = !open"
+        class="fixed bottom-5 right-5 bg-green-500 p-4 rounded-full text-white">
+        <i data-feather="message-circle"></i>
+    </button>
+
+    <!-- Chat Box -->
+    <div x-show="open"
+        class="fixed bottom-20 right-5 w-72 bg-white rounded-xl shadow-lg p-4 transition">
+
+        <div class="flex justify-between items-center">
+            <p class="font-bold">Hi, How can I help you?</p>
+            <button @click="open = false">✕</button>
+        </div>
+
+        <a href="https://wa.me/628123456789"
+            class="mt-3 block bg-green-500 text-white p-2 rounded-lg text-center">
+            Reply to Reka Furniture
+        </a>
+    </div>
+
+</div>
 @endsection

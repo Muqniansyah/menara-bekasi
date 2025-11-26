@@ -1,5 +1,8 @@
 import "./bootstrap";
 
+// bootstrap icons
+import "bootstrap-icons/font/bootstrap-icons.css";
+
 // produk
 window.productDetail = function () {
     return {
@@ -102,3 +105,24 @@ window.addEventListener("scroll", () => {
         navbar.classList.remove("bg-[#C8A27A]", "shadow-md");
     }
 });
+
+// kontak (GetButton.io)
+(function () {
+    var options = {
+        whatsapp: "+6285817298071",
+        call_to_action: "Hai, Ada yang bisa saya bantu?",
+        position: "right",
+    };
+    var proto = document.location.protocol,
+        host = "getbutton.io",
+        url = proto + "//static." + host;
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = url + "/widget-send-button/js/init.js";
+    s.onload = function () {
+        WhWidgetSendButton.init(host, proto, options);
+    };
+    var x = document.getElementsByTagName("script")[0];
+    x.parentNode.insertBefore(s, x);
+})();

@@ -5,7 +5,7 @@
 
     <!-- Left -->
     <div
-        class="w-full md:w-1/2 text-[#C8A27A] mb-12 md:mb-0"
+        class="w-full md:w-1/2 text-gray-900 mb-12 md:mb-0"
         x-show="show"
         x-transition.opacity.duration.700ms
         x-transition.transform.origin.left
@@ -15,7 +15,7 @@
             Export Kayu <br> Terpercaya & Internasional
         </h1>
 
-        <p class="font-['Inter'] text-base md:text-lg opacity-90 mb-8">
+        <p class="font-['Inter'] text-base md:text-lg opacity-90 mb-8 text-gray-600">
             PT. Menara Bekasi menghadirkan kualitas terbaik dengan sentuhan klasik dan modern,
             menghadirkan estetika kayu yang elegan untuk setiap kebutuhan Anda.
         </p>

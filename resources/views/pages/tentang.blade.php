@@ -211,6 +211,7 @@
     </div>
 </section>
 
+{{-- GALERI --}}
 <section class="py-20">
     <div class="container mx-auto px-4">
         <h2 class="text-3xl md:text-4xl font-bold font-['Playfair_Display'] text-center mb-10">

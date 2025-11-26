@@ -14,8 +14,8 @@
             <h3 class="text-lg font-semibold mb-4 font-['Inter']">Lokasi & Kontak</h3>
 
             <p class="text-sm text-white/80 font-['Inter'] leading-relaxed mb-4">
-                Jl. WR. Supratman RT 02 RW 06<br>
-                Bekasi, Jawa Barat<br>
+                Cimuning, Kota Bekasi<br>
+                Provinsi Jawa Barat<br>
                 Indonesia
             </p>
 
@@ -33,7 +33,7 @@
                     target="_blank"
                     rel="noopener noreferrer"
                     class="hover:text-[#C8A27A] transition">
-                    +62 581-7298-071
+                    +62 858-1729-8071
                 </a>
             </p>
         </div>

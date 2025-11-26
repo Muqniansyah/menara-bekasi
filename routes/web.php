@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\FaqController;
+use App\Http\Controllers\KontakController;
 
 Route::get('/', [FaqController::class, 'index']);
 
@@ -19,3 +20,6 @@ Route::get('/produk', function () {
 Route::get('/kontak', function () {
     return view('pages.kontak');
 });
+
+// FORM KONTAK (POST)
+Route::post('/kirim-kontak', [KontakController::class, 'kirim'])->name('kontak.kirim');

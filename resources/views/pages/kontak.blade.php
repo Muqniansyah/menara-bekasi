@@ -199,6 +199,23 @@
     <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         {{-- KIRI: FORM KONTAK --}}
         <div class="bg-white p-10 rounded-3xl shadow-lg">
+            <!-- pemberitahuan -->
+            @if (session('success'))
+            <div class="mb-4 p-3 bg-green-100 text-green-700 rounded-xl">
+                {{ session('success') }}
+            </div>
+            @endif
+
+            @if ($errors->any())
+            <div class="mb-4 p-3 bg-red-100 text-red-700 rounded-xl">
+                <ul class="list-disc ml-5">
+                    @foreach ($errors->all() as $err)
+                    <li>{{ $err }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
+
             <span class="text-sm text-pink-600 font-semibold">Dapatkan Bantuan</span>
 
             <h2 class="text-4xl font-bold text-gray-900 mt-2 leading-tight">
@@ -209,11 +226,13 @@
                 Ada pertanyaan atau butuh bantuan? Isi formulir di bawah, kami akan membalas dalam 24 jam.
             </p>
 
-            <form action="#" method="POST" class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <form action="{{ route('kontak.kirim') }}" method="POST" class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                @csrf
+
                 {{-- NAMA --}}
                 <div class="sm:col-span-1">
                     <label class="block text-sm font-medium mb-1">Nama Lengkap</label>
-                    <input type="text"
+                    <input type="text" name="nama"
                         class="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-300 focus:border-green-500"
                         placeholder="Masukkan nama anda">
                 </div>
@@ -221,7 +240,7 @@
                 {{-- EMAIL --}}
                 <div class="sm:col-span-1">
                     <label class="block text-sm font-medium mb-1">Email</label>
-                    <input type="email"
+                    <input type="email" name="email"
                         class="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-300"
                         placeholder="contoh@mail.com">
                 </div>
@@ -229,7 +248,7 @@
                 {{-- NO TELP --}}
                 <div class="sm:col-span-1">
                     <label class="block text-sm font-medium mb-1">No. Telepon</label>
-                    <input type="text"
+                    <input type="text" name="telepon"
                         class="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-300"
                         placeholder="08xxxxxxxx">
                 </div>
@@ -237,7 +256,7 @@
                 {{-- SUBJECT --}}
                 <div class="sm:col-span-1">
                     <label class="block text-sm font-medium mb-1">Subjek</label>
-                    <input type="text"
+                    <input type="text" name="subjek"
                         class="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-300"
                         placeholder="Subjek pesan">
                 </div>
@@ -245,7 +264,7 @@
                 {{-- PESAN --}}
                 <div class="sm:col-span-2">
                     <label class="block text-sm font-medium mb-1">Pesan</label>
-                    <textarea rows="5"
+                    <textarea name="pesan" rows="5"
                         class="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-300"
                         placeholder="Tuliskan pesan anda..."></textarea>
                 </div>
@@ -258,6 +277,7 @@
                     </button>
                 </div>
             </form>
+
         </div>
 
         {{-- KANAN: GAMBAR --}}

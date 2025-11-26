@@ -74,6 +74,11 @@ body {
     background-image: url("../images/kontak/background.svg");
 }
 
+/* modal promo alert kontak */
+[x-cloak] {
+    display: none !important;
+}
+
 /* footer */
 footer {
     background-image: url("../images/footer.png");

@@ -270,77 +270,55 @@
     </div>
 </section>
 
+{{-- MODAL PROMO ALERT --}}
+<div x-data="whatsappPromo()">
+    <!-- Overlay -->
+    <div
+        x-show="show"
+        x-transition.opacity
+        x-cloak
+        class="fixed inset-0 bg-black/40 backdrop-blur-sm z-40">
+    </div>
 
-<div x-data="whatsappPromo()"
-    x-show="show"
-    x-transition:enter="transition ease-out duration-700"
-    x-transition:enter-start="opacity-0 translate-y-10"
-    x-transition:enter-end="opacity-100 translate-y-0"
-    x-transition:leave="transition ease-in duration-500"
-    x-transition:leave-start="opacity-100 translate-y-0"
-    x-transition:leave-end="opacity-0 translate-y-10"
-    class="fixed bottom-6 right-6 z-50">
+    <!-- Popup -->
+    <div x-show="show"
+        x-transition:enter="transition ease-out duration-700"
+        x-transition:enter-start="opacity-0 scale-90"
+        x-transition:enter-end="opacity-100 scale-100"
+        x-transition:leave="transition ease-in duration-500"
+        x-transition:leave-start="opacity-100 scale-100"
+        x-transition:leave-end="opacity-0 scale-90"
+        x-cloak
+        class="fixed inset-0 flex items-center justify-center z-50 p-4">
 
-    <div class="relative bg-white w-80 md:w-96 rounded-2xl shadow-2xl border p-5 flex items-start gap-4">
+        <div class="relative bg-white w-[480px] md:w-[520px] rounded-2xl shadow-2xl border p-8 flex items-start gap-5">
+            <!-- Foto -->
+            <img src="{{ asset('images/kontak/menara.png') }}"
+                class="w-20 h-20 rounded-full object-cover shadow">
 
-        <!-- Foto CS -->
-        <img src="/images/cs.jpg"
-            class="w-14 h-14 rounded-full object-cover shadow">
+            <div class="flex-1">
+                <h3 class="text-2xl font-semibold">Halo! 😊</h3>
+                <p class="text-gray-600 text-base leading-relaxed mt-1">
+                    Ada yang bisa saya bantu terkait kebutuhan kemasan kayu & sertifikasi ISPM 15?
+                </p>
 
-        <div class="flex-1">
-            <h3 class="text-lg font-semibold">Halo! Saya Ayu</h3>
-            <p class="text-gray-600 text-sm leading-relaxed">
-                Ada yang bisa saya bantu terkait kebutuhan kemasan kayu & sertifikasi ISPM 15?
-            </p>
+                <!-- Tombol WA -->
+                <a href="https://wa.me/6285817298071"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="mt-5 inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-5 py-3 rounded-xl text-base font-medium transition cursor-pointer">
+                    <i class="bi bi-whatsapp text-xl"></i>
+                    Chat WhatsApp
+                </a>
+            </div>
 
-            <!-- Tombol WA -->
-            <a href="https://wa.me/6281234567890"
-                class="mt-4 inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition">
-                <!-- Feather Icon WA -->
-                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.47 8.47 0 0 1 8 8v.5z"></path>
-                </svg>
-
-                Chat WhatsApp
-            </a>
+            <!-- Close -->
+            <button @click="closePopup"
+                class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl cursor-pointer">
+                &times;
+            </button>
         </div>
-
-        <!-- Close -->
-        <button @click="closePopup"
-            class="absolute top-3 right-3 text-gray-500 hover:text-gray-700 text-xl leading-none">
-            &times;
-        </button>
     </div>
 </div>
-
-<script>
-    function whatsappPromo() {
-        return {
-            show: false,
-            delay: 3000, // muncul setelah 3 detik
-
-            init() {
-                const lastShown = localStorage.getItem("promoLastShown");
-                const now = Date.now();
-                const oneDay = 24 * 60 * 60 * 1000;
-
-                // Jika belum pernah muncul atau sudah lewat 24 jam
-                if (!lastShown || now - lastShown > oneDay) {
-                    setTimeout(() => {
-                        this.show = true;
-                        // simpan waktu terakhir muncul
-                        localStorage.setItem("promoLastShown", now);
-                    }, this.delay);
-                }
-            },
-
-            closePopup() {
-                this.show = false;
-            }
-        }
-    }
-</script>
-
 
 @endsection

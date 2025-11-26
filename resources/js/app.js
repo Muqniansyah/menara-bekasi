@@ -3,6 +3,32 @@ import "./bootstrap";
 // bootstrap icons
 import "bootstrap-icons/font/bootstrap-icons.css";
 
+// kontak - modal promo alert (popup muncul hanya 1 kali per 24 jam)
+window.whatsappPromo = function () {
+    return {
+        show: false,
+        delay: 3000, // muncul setelah 3 detik
+
+        init() {
+            const lastShown = localStorage.getItem("promoLastShown");
+            const now = Date.now();
+            const oneDay = 24 * 60 * 60 * 1000;
+
+            // Jika belum pernah muncul atau sudah lewat 24 jam
+            if (!lastShown || now - lastShown > oneDay) {
+                setTimeout(() => {
+                    this.show = true;
+                    localStorage.setItem("promoLastShown", now);
+                }, this.delay);
+            }
+        },
+
+        closePopup() {
+            this.show = false;
+        },
+    };
+};
+
 // produk
 window.productDetail = function () {
     return {

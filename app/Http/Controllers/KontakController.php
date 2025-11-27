@@ -28,7 +28,7 @@ Subjek: {$request->subjek}
 Pesan:
 {$request->pesan}
 ", function ($message) use ($request) {
-            $message->to('muqniansyah@gmail.com'); // ganti ke email tujuan kamu
+            $message->to('menarabekasiblog@gmail.com'); // ganti ke email tujuan kamu
             $message->subject('Pesan Baru dari Form Kontak');
         });
 

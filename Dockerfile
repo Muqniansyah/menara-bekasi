@@ -10,7 +10,13 @@ RUN apk add --no-cache \
     zip \
     unzip \
     nodejs \
-    npm
+    npm \
+    mysql-client \
+    icu-dev \
+    oniguruma-dev
+
+# Install PHP extensions
+RUN docker-php-ext-install pdo pdo_mysql intl
 
 # Install composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
@@ -30,11 +36,17 @@ FROM php:8.2-fpm-alpine
 
 WORKDIR /var/www/html
 
+# Install PHP extensions again in prod stage
+RUN apk add --no-cache \
+    mysql-client \
+    icu-dev \
+    oniguruma-dev
+
+RUN docker-php-ext-install pdo pdo_mysql intl
+
 # Copy files from build stage
 COPY --from=build /var/www/html .
 
-# Expose port untuk Railway (biasanya 3000)
 EXPOSE 3000
 
-# Jalankan Laravel menggunakan php artisan serve
 CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=3000"]

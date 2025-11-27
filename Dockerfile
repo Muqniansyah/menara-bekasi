@@ -1,35 +1,40 @@
-# ---------------------------------------------
-# 1) Build stage (Composer + Node for Vite)
-# ---------------------------------------------
-FROM richarvey/nginx-php-fpm:latest as build
+# Build stage
+FROM php:8.2-fpm-alpine AS build
 
-# Set working directory
 WORKDIR /var/www/html
 
-# Copy all project files
+# Install dependencies
+RUN apk add --no-cache \
+    bash \
+    curl \
+    zip \
+    unzip \
+    nodejs \
+    npm
+
+# Install composer
+COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+
+# Copy project files
 COPY . .
 
 # Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader
 
-# Install Node and build Vite
-RUN apk add --no-cache nodejs npm
+# Build Vite
 RUN npm install && npm run build
 
 
-# ---------------------------------------------
-# 2) Production Stage
-# ---------------------------------------------
-FROM richarvey/nginx-php-fpm:latest
+# Production stage
+FROM php:8.2-fpm-alpine
 
-# Set working directory
 WORKDIR /var/www/html
 
-# Copy project from build stage
+# Copy files from build stage
 COPY --from=build /var/www/html .
 
-# Expose port yang dipakai Render
-EXPOSE 8080
+# Expose port untuk Railway (biasanya 3000)
+EXPOSE 3000
 
-# Jalankan Laravel bawaan image (nginx + php-fpm)
-CMD ["start"]
+# Jalankan Laravel menggunakan php artisan serve
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=3000"]

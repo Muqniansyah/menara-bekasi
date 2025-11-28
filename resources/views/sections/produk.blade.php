@@ -63,7 +63,7 @@
             <div class="group">
                 <div class="relative overflow-hidden rounded-sm shadow bg-white">
                     <img
-                        src="{{ asset('images/produk/Triplek-3d.png') }}"
+                        src="{{ asset('images/produk/triplek-3d.png') }}"
                         alt="triplek-kayu"
                         class="w-full h-80 object-contain -translate-y-6
                                group-hover:scale-105 transition duration-500">

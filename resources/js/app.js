@@ -1,5 +1,15 @@
 import "./bootstrap";
 
+// AOS
+import AOS from "aos";
+import "aos/dist/aos.css";
+
+// GSAP
+import { gsap } from "gsap";
+
+// Inisialisasi AOS
+AOS.init();
+
 // bootstrap icons
 import "bootstrap-icons/font/bootstrap-icons.css";
 

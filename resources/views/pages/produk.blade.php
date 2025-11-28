@@ -113,7 +113,7 @@
                     desc: `Palet plywood/triplek memiliki banyak kemiripan karakteristik dengan pallet kayu. 
                     Plywood/triplek cukup kuat, ringan, dan cocok untuk ekspedisi dan transportasi. Selain itu, 
                     plywood/triplek memiliki permukaan yang bersih dan tekstur yang halus.`,
-                    img: `{{ asset('images/produk/Triplek-3d.png') }}`
+                    img: `{{ asset('images/produk/triplek-3d.png') }}`
                 })">
 
                 <div
@@ -122,7 +122,7 @@
                         : 'bg-white shadow-sm'"
                     class="rounded-xl border transition p-6 group">
 
-                    <img src="{{ asset('images/produk/Triplek-3d.png') }}"
+                    <img src="{{ asset('images/produk/triplek-3d.png') }}"
                         class="w-full h-56 object-contain mb-6 group-hover:scale-105 transition">
 
                     <h3 class="text-xl font-semibold text-gray-900 font-['Playfair_Display']">Triplek Kayu</h3>

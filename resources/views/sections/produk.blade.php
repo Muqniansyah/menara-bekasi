@@ -1,6 +1,5 @@
 <section class="py-16 bg-[#F5E7C6]">
     <div class="container mx-auto px-4">
-
         <!-- Header (Judul di kanan) -->
         <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-12">
             <div></div> <!-- ruang kosong kiri -->
@@ -18,7 +17,7 @@
         <!-- Produk Grid -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
             <!-- Item 1 -->
-            <div class="group">
+            <div class="group" data-aos="flip-left">
                 <div class="relative overflow-hidden rounded-sm shadow bg-white">
                     <img
                         src="{{ asset('images/produk/pallet-kayu-3d.png') }}"
@@ -39,7 +38,7 @@
             </div>
 
             <!-- Item 2 -->
-            <div class="group">
+            <div class="group" data-aos="flip-up">
                 <div class="relative overflow-hidden rounded-sm shadow bg-white">
                     <img
                         src="{{ asset('images/produk/kotak-kayu-3d.png') }}"
@@ -60,7 +59,7 @@
             </div>
 
             <!-- Item 3 -->
-            <div class="group">
+            <div class="group" data-aos="flip-right">
                 <div class="relative overflow-hidden rounded-sm shadow bg-white">
                     <img
                         src="{{ asset('images/produk/triplek-3d.png') }}"

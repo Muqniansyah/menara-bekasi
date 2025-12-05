@@ -36,7 +36,7 @@
 
         @foreach ($menus as $menu)
         <a href="{{ $menu['url'] }}"
-            class="text-2xl tracking-widest relative group">
+            class="text-2xl tracking-widest relative group menu-wobble">
             {{ $menu['title'] }}
 
             <!-- garis hover -->

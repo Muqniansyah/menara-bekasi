@@ -18,6 +18,37 @@ body {
     border-radius: 60% 40% 30% 70% / 50% 60% 40% 50%;
 }
 
+/* navbar */
+@keyframes wobbleSmooth {
+    0% {
+        transform: translateX(0);
+    }
+    20% {
+        transform: translateX(-3px);
+    }
+    40% {
+        transform: translateX(3px);
+    }
+    60% {
+        transform: translateX(-2px);
+    }
+    80% {
+        transform: translateX(2px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.menu-wobble:hover {
+    animation: wobbleSmooth 0.6s ease-in-out;
+}
+
+/* header */
+#judul {
+    visibility: hidden;
+}
+
 /* tentang */
 .tentang {
     background-image: url("../images/tentang.jpeg");
@@ -25,6 +56,51 @@ body {
     background-position: center 80%; /* geser sedikit ke bawah */
     background-attachment: fixed;
     filter: grayscale(100%);
+}
+
+/* Animasi masuk */
+@keyframes fadeUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Default sebelum muncul */
+.gallery-item {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+/* Hover effect mewah */
+.gallery-img:hover {
+    transform: scale(1.05);
+    transition: 0.4s ease;
+    box-shadow: 0 8px 20px rgba(200, 162, 122, 0.35);
+}
+
+/* Delay animasi */
+.gallery-delay-1 {
+    transition-delay: 0.1s;
+}
+.gallery-delay-2 {
+    transition-delay: 0.2s;
+}
+.gallery-delay-3 {
+    transition-delay: 0.3s;
+}
+.gallery-delay-4 {
+    transition-delay: 0.4s;
+}
+.gallery-delay-5 {
+    transition-delay: 0.5s;
+}
+.gallery-delay-6 {
+    transition-delay: 0.6s;
 }
 
 /* trend */
@@ -69,9 +145,72 @@ body {
     stroke-width: 2.5;
 }
 
+/* Container Swiper */
+.product-swiper {
+    width: 100%;
+    height: 320px; /* wajib! agar swiper tidak panjang ke bawah */
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #f8f8f8;
+}
+
+/* Slide Image */
+.slide-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* kalau ingin gambar tidak gepeng */
+    border-radius: 12px;
+}
+
+/* Tombol navigasi */
+.product-prev,
+.product-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 38px;
+    height: 38px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(4px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    z-index: 20;
+}
+
+.product-prev::after,
+.product-next::after {
+    font-size: 18px;
+    font-weight: bold;
+    color: #111;
+}
+
+.product-prev {
+    left: 10px;
+}
+
+.product-next {
+    right: 10px;
+}
+
 /* kontak */
 .kontak-bg {
-    background-image: url("../images/kontak/background.svg");
+    background-image: url("../images/logo.png");
+}
+
+@keyframes zoom {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.animate-zoom {
+    animation: zoom 4s ease-in-out infinite;
 }
 
 /* modal promo alert kontak */

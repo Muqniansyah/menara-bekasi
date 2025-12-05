@@ -23,7 +23,7 @@
 
     <!-- Center Text -->
     <div class="relative z-10 flex items-center justify-center h-full">
-        <h1 class="text-white text-4xl md:text-6xl font-['Playfair_Display'] tracking-wide">
+        <h1 id="judul" class="text-white text-4xl md:text-6xl font-['Playfair_Display'] tracking-wide">
             Produk
         </h1>
     </div>
@@ -45,21 +45,22 @@
         </div>
 
         {{-- GRID PRODUK --}}
-        <div id="produk-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+
             {{-- ITEM 1 --}}
             <div class="cursor-pointer"
                 @click="showDetail({
                     id: 1,
                     title: 'Pallet Kayu',
-                    desc: `Pallet kayu produksi kami terbuat dari berbagai macam jenis kayu dan plywood dengan berbagai 
-                    macam ukuran dan sfesifikasi sesuai kebutuhan customer dengan beban muali 100 Kg sampai dengan 2500 Kg.`,
-                    img: `{{ asset('images/produk/pallet-kayu-3d.png') }}`
+                    desc: `Pallet kayu kami dibuat dari berbagai jenis kayu dan plywood ...`,
+                    images: [
+                        '{{ asset('images/produk/pallet-kayu-3d.png') }}',
+                        '{{ asset('images/produk/kotak-kayu-3d.png') }}',
+                        '{{ asset('images/produk/pallet-3.jpeg') }}'
+                    ]
                 })">
 
-                <div
-                    :class="activeId === 1
-                        ? 'bg-blue-50 border-blue-600 shadow-xl scale-[1.03]'
-                        : 'bg-white shadow-sm'"
+                <div :class="activeId === 1 ? 'bg-blue-50 border-blue-600 shadow-xl scale-[1.03]' : 'bg-white shadow-sm'"
                     class="rounded-xl border transition p-6 group">
 
                     <img src="{{ asset('images/produk/pallet-kayu-3d.png') }}"
@@ -69,7 +70,7 @@
 
                     <p class="mt-2 text-sm"
                         :class="activeId === 1 ? 'text-gray-900 font-medium' : 'text-gray-600'">
-                        <span x-text="activeId === 1 ? 'Pallet Kayu untuk kebutuhan ekspor.' : 'Pallet standar ekspor ISPM 15.'"></span>
+                        <span x-text="activeId === 1 ? 'Pallet Kayu untuk ekspor.' : 'Pallet standar ISPM 15.'"></span>
                     </p>
                 </div>
             </div>
@@ -79,18 +80,14 @@
                 @click="showDetail({
                     id: 2,
                     title: 'Kotak Kayu',
-                    desc: `Kotak kayu adalah wadah terbuat dari kayu yang berguna untuk penyimpanan atau pengiriman barang. 
-                    Kekuatan kotak kayu dinilai berdasarkan berat yang dapat ditampung sebelum tutup (atas, ujung, dan samping) dipasang. 
-                    Performa kotak kayu sangat dipengaruhi oleh desain spesifiknya, jenis kayu yang digunakan, 
-                    jenis pengencang (seperti paku), dan juga proses pengerjaannya. 
-                    Jangan ragu untuk menghubungi kami guna mendiskusikan spesifikasi dan kebutuhan palet Anda secara lebih detail.`,
-                    img: `{{ asset('images/produk/kotak-kayu-3d.png') }}`
+                    desc: `Kotak kayu kuat untuk penyimpanan dan pengiriman barang ...`,
+                    images: [
+                        '{{ asset('images/produk/kotak-kayu-3d.png') }}',
+                        '{{ asset('images/produk/kotak-2.jpeg') }}'
+                    ]
                 })">
 
-                <div
-                    :class="activeId === 2
-                        ? 'bg-blue-50 border-blue-600 shadow-xl scale-[1.03]'
-                        : 'bg-white shadow-sm'"
+                <div :class="activeId === 2 ? 'bg-blue-50 border-blue-600 shadow-xl scale-[1.03]' : 'bg-white shadow-sm'"
                     class="rounded-xl border transition p-6 group">
 
                     <img src="{{ asset('images/produk/kotak-kayu-3d.png') }}"
@@ -110,16 +107,14 @@
                 @click="showDetail({
                     id: 3,
                     title: 'Triplek Kayu',
-                    desc: `Palet plywood/triplek memiliki banyak kemiripan karakteristik dengan pallet kayu. 
-                    Plywood/triplek cukup kuat, ringan, dan cocok untuk ekspedisi dan transportasi. Selain itu, 
-                    plywood/triplek memiliki permukaan yang bersih dan tekstur yang halus.`,
-                    img: `{{ asset('images/produk/triplek-3d.png') }}`
+                    desc: `Triplek halus, kuat, ringan, cocok untuk ekspedisi ...`,
+                    images: [
+                        '{{ asset('images/produk/triplek-3d.png') }}',
+                        '{{ asset('images/produk/triplek-2.jpeg') }}'
+                    ]
                 })">
 
-                <div
-                    :class="activeId === 3
-                        ? 'bg-blue-50 border-blue-600 shadow-xl scale-[1.03]'
-                        : 'bg-white shadow-sm'"
+                <div :class="activeId === 3 ? 'bg-blue-50 border-blue-600 shadow-xl scale-[1.03]' : 'bg-white shadow-sm'"
                     class="rounded-xl border transition p-6 group">
 
                     <img src="{{ asset('images/produk/triplek-3d.png') }}"
@@ -129,66 +124,56 @@
 
                     <p class="mt-2 text-sm"
                         :class="activeId === 3 ? 'text-gray-900 font-medium' : 'text-gray-600'">
-                        <span x-text="activeId === 3 ? 'Triplek Kayu bertekstur halus.' : 'Triplek halus berkualitas tinggi.'"></span>
+                        <span x-text="activeId === 3 ? 'Triplek Kayu tekstur halus.' : 'Triplek berkualitas tinggi.'"></span>
                     </p>
                 </div>
             </div>
         </div>
 
-        {{-- DETAIL PRODUK --}}
-        <div x-show="active" x-transition
-            class="mt-16 bg-white rounded-xl shadow-md p-8 border border-gray-200">
+        {{-- DETAIL PRODUK + SWIPER --}}
+        <div x-show="active" x-transition class="mt-16 bg-white rounded-xl shadow-md p-8 border border-gray-200">
+
             <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+
+                {{-- SWIPER --}}
                 <div>
-                    <img :src="active.img" class="w-full h-80 object-contain">
+
+                    <div class="swiper product-swiper" x-ref="mySwiper">
+                        <div class="swiper-wrapper">
+                            <template x-for="img in active.images" :key="img">
+                                <div class="swiper-slide">
+                                    <img :src="img" class="w-full h-80 object-contain rounded-lg shadow-sm">
+                                </div>
+                            </template>
+                        </div>
+
+                        <!-- NAVIGASI DENGAN IKON -->
+                        <div x-ref="prevBtn" class="swiper-button-prev !text-gray-700"></div>
+                        <div x-ref="nextBtn" class="swiper-button-next !text-gray-700"></div>
+                    </div>
+
+                    <!-- THUMBNAILS -->
+                    <div class="flex gap-3 mt-4">
+                        <template x-for="(t, i) in active.images">
+                            <img :src="t"
+                                @click="goTo(i)"
+                                class="w-20 h-20 object-cover cursor-pointer rounded-lg border hover:scale-105 transition">
+                        </template>
+                    </div>
+
+
                 </div>
 
+                {{-- TEXT --}}
                 <div>
-                    <h3 class="text-3xl font-semibold font-['Playfair_Display'] mb-4" x-text="active.title"></h3>
+                    <h3 class="text-3xl font-semibold font-['Playfair_Display'] mb-4"
+                        x-text="active.title"></h3>
+
                     <p class="text-gray-700 leading-relaxed mb-6" x-text="active.desc"></p>
 
-                    <div class="flex gap-4">
-                        {{-- WHATSAPP --}}
-                        <button @click="shareWA()"
-                            class="relative group flex items-center gap-2 px-5 py-2 bg-green-600 text-white rounded-lg cursor-pointer hover:brightness-110 hover:shadow-md hover:scale-[1.03] transition duration-300">
-                            <i data-feather="message-circle"></i>
-
-                            <!-- Tooltip -->
-                            <span
-                                class="absolute left-1/2 -translate-x-1/2 -top-10 opacity-0 group-hover:opacity-100 bg-black text-white text-sm px-3 py-1 rounded shadow-md transition duration-300 whitespace-nowrap">
-                                Bagikan di WhatsApp
-                                <span class="absolute left-1/2 -translate-x-1/2 top-full border-8 border-transparent border-t-black"></span>
-                            </span>
-                        </button>
-
-                        {{-- FACEBOOK --}}
-                        <button @click="shareFB()"
-                            class="relative group flex items-center gap-2 px-5 py-2 bg-blue-600 text-white rounded-lg cursor-pointer hover:brightness-110 hover:shadow-md hover:scale-[1.03] transition duration-300">
-                            <i data-feather="facebook"></i>
-
-                            <!-- Tooltip -->
-                            <span
-                                class="absolute left-1/2 -translate-x-1/2 -top-10 opacity-0 group-hover:opacity-100 bg-black text-white text-sm px-3 py-1 rounded shadow-md transition duration-300 whitespace-nowrap">
-                                Bagikan di Facebook
-                                <span class="absolute left-1/2 -translate-x-1/2 top-full border-8 border-transparent border-t-black"></span>
-                            </span>
-                        </button>
-
-                        {{-- COPY --}}
-                        <button @click="copyLink()"
-                            class="relative group flex items-center gap-2 px-5 py-2 bg-gray-700 text-white rounded-lg cursor-pointer hover:brightness-110 hover:shadow-md hover:scale-[1.03] transition duration-300">
-                            <i data-feather="copy"></i>
-
-                            <!-- Tooltip -->
-                            <span
-                                class="absolute left-1/2 -translate-x-1/2 -top-10 opacity-0 group-hover:opacity-100 bg-black text-white text-sm px-3 py-1 rounded shadow-md transition duration-300 whitespace-nowrap">
-                                Salin Tautan
-                                <span class="absolute left-1/2 -translate-x-1/2 top-full border-8 border-transparent border-t-black"></span>
-                            </span>
-                        </button>
-                    </div>
                 </div>
             </div>
+
         </div>
     </div>
 </section>

@@ -23,7 +23,7 @@
 
     <!-- Center Text -->
     <div class="relative z-10 flex items-center justify-center h-full">
-        <h1 class="text-white text-4xl md:text-6xl font-['Playfair_Display'] tracking-wide">
+        <h1 id="judul" class="text-white text-4xl md:text-6xl font-['Playfair_Display'] tracking-wide">
             Blog
         </h1>
     </div>

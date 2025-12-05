@@ -23,7 +23,7 @@
 
     <!-- Center Text -->
     <div class="relative z-10 flex items-center justify-center h-full">
-        <h1 class="text-white text-4xl md:text-6xl font-['Playfair_Display'] tracking-wide">
+        <h1 id="judul" class="text-white text-4xl md:text-6xl font-['Playfair_Display'] tracking-wide">
             Tentang
         </h1>
     </div>
@@ -211,6 +211,63 @@
     </div>
 </section>
 
+{{-- JENIS KAYU --}}
+<section class="py-20 bg-[#F5EFE7]">
+    <div class="container mx-auto px-4">
+        {{-- Judul dengan animasi --}}
+        <h2 data-aos="fade-down" data-aos-duration="800"
+            class="text-3xl md:text-4xl font-bold font-['Playfair_Display'] text-center mb-12">
+            Jenis Kayu yang Kami Sediakan
+        </h2>
+
+        <div class="grid gap-10 md:grid-cols-3">
+            @foreach ([
+            ['nama' => 'Kayu Racuk', 'deskripsi' => 'Serbaguna dan kuat, cocok untuk konstruksi dan furnitur.', 'foto' => 'kayu-racuk.jpg'],
+            ['nama' => 'Kayu Mahoni', 'deskripsi' => 'Warna merah elegan, ideal untuk furnitur premium.', 'foto' => 'kayu-mahoni.jpg'],
+            ['nama' => 'Kayu Meranti', 'deskripsi' => 'Ringan namun tahan lama, cocok untuk panel dan kusen.', 'foto' => 'kayu-meranti.jpg'],
+            ['nama' => 'Kayu Jati', 'deskripsi' => 'Paling premium dan tahan cuaca, cocok outdoor.', 'foto' => 'kayu-jati.jpg'],
+            ['nama' => 'Kayu Sengon', 'deskripsi' => 'Ringan dan mudah dibentuk, ideal untuk industri kerajinan.', 'foto' => 'kayu-sengon.jpg'],
+            ['nama' => 'Kayu Kamper', 'deskripsi' => 'Kuat dan awet, banyak dipakai untuk konstruksi.', 'foto' => 'kayu-kamper.jpg'],
+            ] as $index => $kayu)
+
+            {{-- Card dengan animasi zoom-in dan delay otomatis --}}
+            <div data-aos="zoom-in"
+                data-aos-delay="{{ $index * 150 }}"
+                data-aos-duration="800"
+                class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition group">
+
+                <img src="{{ asset('images/tentang/' . $kayu['foto']) }}"
+                    class="w-full h-52 object-cover group-hover:scale-105 transition duration-500">
+
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2">
+                        {{ $kayu['nama'] }}
+                    </h3>
+
+                    <p class="text-gray-600 mb-5 leading-relaxed">
+                        {{ $kayu['deskripsi'] }}
+                    </p>
+
+                    @php
+                    $pesan = urlencode("Halo Admin, saya ingin menanyakan tentang {$kayu['nama']}.");
+                    @endphp
+
+                    <a href="https://wa.me/6285817298071?text={{ $pesan }}"
+                        target="_blank"
+                        class="inline-block px-5 py-2 rounded-lg font-medium text-white 
+                              bg-[#C8A27A] hover:bg-[#b48a62] transition shadow-md">
+                        Konsultasi Kayu
+                    </a>
+                </div>
+
+            </div>
+
+            @endforeach
+
+        </div>
+    </div>
+</section>
+
 {{-- GALERI --}}
 <section class="py-20">
     <div class="container mx-auto px-4">
@@ -227,16 +284,25 @@
             'galeri/galeri-4.jpeg',
             'galeri/galeri-5.jpg',
             'galeri/galeri-6.jpg'
-            ] as $foto)
+            ] as $index => $foto)
 
-            <div class="break-inside-avoid overflow-hidden rounded-xl shadow">
+            <div class="break-inside-avoid overflow-hidden rounded-xl shadow
+                gallery-item opacity-0 translate-y-6 gallery-delay-{{ $index + 1 }}">
                 <img
                     src="{{ asset('images/' . $foto) }}"
-                    class="w-full h-auto object-cover hover:opacity-80 transition">
+                    class="w-full h-auto object-cover gallery-img cursor-pointer">
             </div>
 
             @endforeach
+
         </div>
     </div>
 </section>
+
+{{-- LIGHTBOX --}}
+<div id="lightbox"
+    class="fixed inset-0 bg-black/70 backdrop-blur-sm hidden justify-center items-center z-50">
+    <img id="lightbox-img"
+        class="max-w-[90%] max-h-[90%] rounded-xl shadow-xl border-4 border-white">
+</div>
 @endsection

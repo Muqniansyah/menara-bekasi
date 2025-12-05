@@ -8,7 +8,7 @@
         <div class="relative w-full flex justify-center md:justify-start">
             <img src="{{ asset('images/kontak/kontak-header.png') }}"
                 alt="model-kontak-header"
-                class="w-[80%] md:w-[90%] max-w-lg object-contain select-none">
+                class="kontak-img w-[80%] md:w-[90%] max-w-lg object-contain select-none">
         </div>
 
         {{-- RIGHT TEXT CONTENT --}}
@@ -39,19 +39,19 @@
 <section class="w-full py-20 bg-white">
     <div class="max-w-5xl mx-auto px-6 text-center">
         <!-- Title -->
-        <h2 class="text-3xl md:text-5xl font-semibold text-gray-900 font-['Playfair_Display']">
+        <h2 class="text-3xl md:text-5xl font-semibold text-gray-900 font-['Playfair_Display']" data-aos="fade-up" data-aos-duration="800">
             Mengalami Kendala?
         </h2>
 
         <!-- Subtitle -->
-        <p class="text-gray-600 mt-4 max-w-2xl mx-auto">
+        <p class="text-gray-600 mt-4 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="150" data-aos-duration="800">
             Berikut adalah panduan untuk mengatasi masalah umum dalam menghubungi kami.
         </p>
 
         <!-- Cards -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
             <!-- Card 1 -->
-            <div class="p-6 border border-gray-200 rounded-2xl hover:shadow-md transition hover:-translate-y-1 bg-white">
+            <div data-aos="fade-up" data-aos-delay="200" data-aos-duration="900" class="p-6 border border-gray-200 rounded-2xl hover:shadow-md transition hover:-translate-y-1 bg-white">
                 <div class="flex items-start justify-between">
                     <h3 class="text-lg font-semibold text-gray-900">
                         Telepon Tidak Tersambung
@@ -60,14 +60,14 @@
                 </div>
                 <ul class="text-gray-600 text-sm mt-3 space-y-2 text-left">
                     <li>Coba hubungi di luar jam sibuk (10:00–12:00 atau 14:00–16:00)</li>
-                    <li>Gunakan WhatsApp Business: (+62) 812-1912-2595</li>
+                    <li>Gunakan WhatsApp Business: (+62) 858-1729-8071</li>
                     <li>Kirim email untuk jadwal callback</li>
-                    <li>Gunakan form kontak di atas</li>
+                    <li>Gunakan form kontak di bawah</li>
                 </ul>
             </div>
 
             <!-- Card 2 -->
-            <div class="p-6 border border-gray-200 rounded-2xl hover:shadow-md transition hover:-translate-y-1 bg-white">
+            <div data-aos="fade-up" data-aos-delay="300" data-aos-duration="900" class="p-6 border border-gray-200 rounded-2xl hover:shadow-md transition hover:-translate-y-1 bg-white">
                 <div class="flex items-start justify-between">
                     <h3 class="text-lg font-semibold text-gray-900">
                         Email Tidak Dibalas
@@ -83,7 +83,7 @@
             </div>
 
             <!-- Card 3 -->
-            <div class="p-6 border border-gray-200 rounded-2xl hover:shadow-md transition hover:-translate-y-1 bg-white">
+            <div data-aos="fade-up" data-aos-delay="400" data-aos-duration="900" class="p-6 border border-gray-200 rounded-2xl hover:shadow-md transition hover:-translate-y-1 bg-white">
                 <div class="flex items-start justify-between">
                     <h3 class="text-lg font-semibold text-gray-900">
                         Layanan Chat Offline
@@ -102,7 +102,7 @@
         <!-- Row 2 -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
             <!-- Card 4 -->
-            <div class="p-6 border border-gray-200 rounded-2xl hover:shadow-md transition hover:-translate-y-1 bg-white">
+            <div data-aos="fade-up" data-aos-delay="500" data-aos-duration="900" class="p-6 border border-gray-200 rounded-2xl hover:shadow-md transition hover:-translate-y-1 bg-white">
                 <div class="flex items-start justify-between">
                     <h3 class="text-lg font-semibold text-gray-900">
                         Bantuan Prioritas
@@ -110,15 +110,15 @@
                     <span class="text-gray-500">↗</span>
                 </div>
                 <ul class="text-gray-600 text-sm mt-3 space-y-2 text-left">
-                    <li>WhatsApp: (+62) 812-1912-2595</li>
-                    <li>Email: ptwaemandirikarya@wmk.co.id</li>
+                    <li>WhatsApp: (+62) 858-1729-8071</li>
+                    <li>Email: sales@menarabekasilestari.com</li>
                     <li>Kunjungi kantor kami langsung</li>
                     <li>Hubungi di jam operasional untuk respons cepat</li>
                 </ul>
             </div>
 
             <!-- Card 5 -->
-            <div class="p-6 border border-gray-200 rounded-2xl hover:shadow-md transition hover:-translate-y-1 bg-white">
+            <div data-aos="fade-up" data-aos-delay="600" data-aos-duration="900" class="p-6 border border-gray-200 rounded-2xl hover:shadow-md transition hover:-translate-y-1 bg-white">
                 <div class="flex items-start justify-between">
                     <h3 class="text-lg font-semibold text-gray-900">
                         Masalah Teknis
@@ -283,8 +283,8 @@
         {{-- KANAN: GAMBAR --}}
         <div class="flex justify-center">
             <div class="kontak-bg rounded-3xl overflow-hidden shadow-lg">
-                <img src="{{ asset('images/kontak/kontak-sosmed.png') }}"
-                    class="w-full h-full object-cover" alt="Contact Illustration">
+                <img src="{{ asset('images/navbar.png') }}"
+                    class="w-full h-full object-cover animate-zoom" alt="Contact Illustration">
             </div>
         </div>
     </div>

@@ -11,7 +11,7 @@
         x-transition.transform.origin.left
         x-transition.translate.x.20>
 
-        <h1 class="font-['Playfair_Display'] text-4xl md:text-6xl font-semibold leading-tight mb-6">
+        <h1 class="text-title font-['Playfair_Display'] text-4xl md:text-6xl font-semibold leading-tight mb-6">
             Export Kayu <br> Terpercaya & Internasional
         </h1>
 

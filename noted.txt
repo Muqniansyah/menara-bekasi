@@ -1,0 +1,48 @@
+1. setup awal dengan html, css dan sass
+-manage : npm run dev dan php artisan serve.
+-jalankan dari awal : 
+1)
+
+2. cari keywoard untuk judul, meta description, h1 dan h2
+- judul : PT Menara Bekasi
+- h1 : Export Kayu Terpercaya & Internasional
+- meta description : 
+"Pelajari proses pembuatan pallet kayu ekspor yang memenuhi standar ISPM 15 — mulai dari fungsi pallet dalam ekspor, tahapan produksi, hingga keunggulan pallet bersertifikat dari PT Menara Bekasi."
+
+3. buat web dan kompress gambar + alt gambar
+
+4. web responsif
+
+5. menambah rel="noopener noreferrer" untuk keamanan link
+
+6. cta
+https://wa.me/6285817298071
+
+7. hosting web
+https://menara-bekasi-production.up.railway.app/
+
+https://github.com/muqniansyah/menara-bekasi
+
+8. membuat swiper atau carousel slide untuk backlink seo
+
+9. google analytics
+
+
+
+10. google search console
+
+11. sharing button bar
+
+10. memasukkan keywoard json
+
+11. buat file sitemap.xml dan robots.txt
+
+12. uji url sudah aktif
+https://menara-bekasi-production.up.railway.app/
+
+13. uji url sitemap sudah aktif
+https://menara-bekasi-production.up.railway.app/sitemap.xml
+
+14. menambah headers keamanan
+
+15. lakukan minify file (belum)

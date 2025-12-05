@@ -27,8 +27,6 @@ https://github.com/muqniansyah/menara-bekasi
 
 9. google analytics
 
-
-
 10. google search console
 
 11. sharing button bar

@@ -179,17 +179,21 @@ body {
     z-index: 20;
 }
 
-.product-prev::after,
-.product-next::after {
+.product-prev::after {
+    content: "<";
     font-size: 18px;
     font-weight: bold;
-    color: #111;
+}
+
+.product-next::after {
+    content: ">";
+    font-size: 18px;
+    font-weight: bold;
 }
 
 .product-prev {
     left: 10px;
 }
-
 .product-next {
     right: 10px;
 }

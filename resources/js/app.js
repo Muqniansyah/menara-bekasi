@@ -186,38 +186,49 @@ const recentSwiper = new Swiper(".recentSwiper", {
 window.productDetail = function () {
     return {
         active: {
-            images: [],
+            id: null,
             title: "",
             desc: "",
+            images: [],
         },
-        activeId: null,
+
         swiper: null,
 
         showDetail(data) {
             this.active = data;
-            this.activeId = data.id;
 
-            this.$nextTick(() => this.initSwiper());
+            this.$nextTick(() => {
+                this.initSwiper();
+            });
+
+            setTimeout(() => {
+                document
+                    .querySelector(".product-swiper")
+                    ?.scrollIntoView({ behavior: "smooth", block: "center" });
+            }, 100);
         },
 
         initSwiper() {
             if (this.swiper) this.swiper.destroy(true, true);
 
-            this.swiper = new Swiper(this.$refs.mySwiper, {
-                modules: [Navigation],
-                slidesPerView: 1,
-                loop: true,
-                navigation: {
-                    nextEl: this.$refs.nextBtn,
-                    prevEl: this.$refs.prevBtn,
-                },
-            });
+            this.$nextTick(() => {
+                this.swiper = new Swiper(this.$refs.mySwiper, {
+                    modules: [Navigation],
+                    slidesPerView: 1,
+                    loop: true,
+                    navigation: {
+                        nextEl: this.$refs.nextBtn,
+                        prevEl: this.$refs.prevBtn,
+                    },
+                });
 
-            this.swiper.update();
+                this.swiper.update();
+            });
         },
 
         goTo(i) {
-            if (this.swiper) this.swiper.slideToLoop(i);
+            if (!this.swiper) return;
+            this.swiper.slideToLoop(i);
         },
     };
 };
@@ -246,25 +257,25 @@ window.addEventListener("scroll", () => {
 });
 
 // kontak (GetButton.io)
-(function () {
-    var options = {
-        whatsapp: "+6285817298071",
-        call_to_action: "Hai, Ada yang bisa saya bantu?",
-        position: "right",
-    };
-    var proto = document.location.protocol,
-        host = "getbutton.io",
-        url = proto + "//static." + host;
-    var s = document.createElement("script");
-    s.type = "text/javascript";
-    s.async = true;
-    s.src = url + "/widget-send-button/js/init.js";
-    s.onload = function () {
-        WhWidgetSendButton.init(host, proto, options);
-    };
-    var x = document.getElementsByTagName("script")[0];
-    x.parentNode.insertBefore(s, x);
-})();
+// (function () {
+//     var options = {
+//         whatsapp: "+6285817298071",
+//         call_to_action: "Hai, Ada yang bisa saya bantu?",
+//         position: "right",
+//     };
+//     var proto = document.location.protocol,
+//         host = "getbutton.io",
+//         url = proto + "//static." + host;
+//     var s = document.createElement("script");
+//     s.type = "text/javascript";
+//     s.async = true;
+//     s.src = url + "/widget-send-button/js/init.js";
+//     s.onload = function () {
+//         WhWidgetSendButton.init(host, proto, options);
+//     };
+//     var x = document.getElementsByTagName("script")[0];
+//     x.parentNode.insertBefore(s, x);
+// })();
 
 // animasi gsap
 document.addEventListener("DOMContentLoaded", () => {

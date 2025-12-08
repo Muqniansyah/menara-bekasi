@@ -13,7 +13,7 @@
 
         {{-- RIGHT TEXT CONTENT --}}
         <div class="text-gray-900 space-y-6 md:pl-10 text-right">
-            <h1 class="text-4xl md:text-6xl font-semibold leading-tight font-['Playfair_Display']">
+            <h1 class="text-title text-4xl md:text-6xl font-semibold leading-tight font-['Playfair_Display']">
                 Konsultasi cepat.<br>
                 Tim siap bantu.
             </h1>
@@ -199,22 +199,9 @@
     <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         {{-- KIRI: FORM KONTAK --}}
         <div class="bg-white p-10 rounded-3xl shadow-lg">
-            <!-- pemberitahuan -->
-            @if (session('success'))
-            <div class="mb-4 p-3 bg-green-100 text-green-700 rounded-xl">
-                {{ session('success') }}
-            </div>
-            @endif
 
-            @if ($errors->any())
-            <div class="mb-4 p-3 bg-red-100 text-red-700 rounded-xl">
-                <ul class="list-disc ml-5">
-                    @foreach ($errors->all() as $err)
-                    <li>{{ $err }}</li>
-                    @endforeach
-                </ul>
-            </div>
-            @endif
+            <!-- pemberitahuan (digunakan JS, bukan session) -->
+            <div id="notif"></div>
 
             <span class="text-sm text-pink-600 font-semibold">Dapatkan Bantuan</span>
 
@@ -226,15 +213,14 @@
                 Ada pertanyaan atau butuh bantuan? Isi formulir di bawah, kami akan membalas dalam 24 jam.
             </p>
 
-            <form action="{{ route('kontak.kirim') }}" method="POST" class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                @csrf
+            <form id="kontakForm" class="grid grid-cols-1 sm:grid-cols-2 gap-6">
 
                 {{-- NAMA --}}
                 <div class="sm:col-span-1">
                     <label class="block text-sm font-medium mb-1">Nama Lengkap</label>
                     <input type="text" name="nama"
                         class="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-300 focus:border-green-500"
-                        placeholder="Masukkan nama anda">
+                        placeholder="Masukkan nama anda" required>
                 </div>
 
                 {{-- EMAIL --}}
@@ -242,7 +228,7 @@
                     <label class="block text-sm font-medium mb-1">Email</label>
                     <input type="email" name="email"
                         class="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-300"
-                        placeholder="contoh@mail.com">
+                        placeholder="contoh@mail.com" required>
                 </div>
 
                 {{-- NO TELP --}}
@@ -250,7 +236,7 @@
                     <label class="block text-sm font-medium mb-1">No. Telepon</label>
                     <input type="text" name="telepon"
                         class="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-300"
-                        placeholder="08xxxxxxxx">
+                        placeholder="08xxxxxxxx" required>
                 </div>
 
                 {{-- SUBJECT --}}
@@ -258,7 +244,7 @@
                     <label class="block text-sm font-medium mb-1">Subjek</label>
                     <input type="text" name="subjek"
                         class="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-300"
-                        placeholder="Subjek pesan">
+                        placeholder="Subjek pesan" required>
                 </div>
 
                 {{-- PESAN --}}
@@ -266,7 +252,7 @@
                     <label class="block text-sm font-medium mb-1">Pesan</label>
                     <textarea name="pesan" rows="5"
                         class="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-300"
-                        placeholder="Tuliskan pesan anda..."></textarea>
+                        placeholder="Tuliskan pesan anda..." required></textarea>
                 </div>
 
                 {{-- BUTTON --}}

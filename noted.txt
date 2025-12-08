@@ -44,3 +44,7 @@ https://menara-bekasi-production.up.railway.app/sitemap.xml
 14. menambah headers keamanan
 
 15. lakukan minify file (belum)
+
+
+remove brevo :composer remove getbrevo/brevo-php (sudah)
+remove resend : composer remove resend/resend-laravel (sudah)

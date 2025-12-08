@@ -72,7 +72,7 @@
     {{-- GRID KEDUA --}}
     <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center mt-16">
         {{-- TEKS PROFIL (KIRI) --}}
-        <div class="space-y-5 text-gray-700 leading-relaxed order-2 md:order-1">
+        <div class="space-y-5 text-gray-700 leading-relaxed order-2 md:order-1" data-aos="fade-right" data-aos-once="true">
             <h3 class="text-2xl md:text-3xl font-['Playfair_Display'] font-semibold">
                 Layanan Heat Treatment Profesional & Pengemasan Kayu
             </h3>
@@ -93,7 +93,7 @@
         </div>
 
         {{-- VIDEO PERUSAHAAN (KANAN) --}}
-        <div class="w-full order-1 md:order-2">
+        <div class="w-full order-1 md:order-2" data-aos="fade-left" data-aos-once="true">
             <video
                 class="w-full h-72 md:h-96 object-cover rounded-lg shadow-md"
                 autoplay
@@ -108,7 +108,7 @@
     {{-- VISI & MISI (DESAIN BARU) --}}
     <div class="mt-20">
         {{-- VISI --}}
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 bg-[#f4f0e6] p-10 rounded-xl">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 bg-[#f4f0e6] p-10 rounded-xl" data-aos="zoom-in-down" data-aos-once="true">
             {{-- Judul Visi --}}
             <div>
                 <span class="text-xs tracking-wide border px-3 py-1 rounded-full">
@@ -131,7 +131,7 @@
         </div>
 
         {{-- MISI (VERSI RESMI + GARIS PEMBATAS) --}}
-        <div class="mt-16 bg-[#f4f0e6] p-10 rounded-xl">
+        <div class="mt-16 bg-[#f4f0e6] p-10 rounded-xl" data-aos="zoom-in-down" data-aos-once="true">
             <span class="text-xs tracking-wide border px-3 py-1 rounded-full">
                 MISI KAMI
             </span>
@@ -148,7 +148,7 @@
                 {{-- Daftar Misi --}}
                 <div class="space-y-8 text-gray-700">
                     {{-- 1 --}}
-                    <div>
+                    <div data-aos="zoom-out" data-aos-delay="200" data-aos-once="true">
                         <div class="flex gap-4">
                             <span class="text-2xl font-semibold"
                                 style="font-family:'Playfair Display', serif;">1.</span>
@@ -158,7 +158,7 @@
                     </div>
 
                     {{-- 2 --}}
-                    <div>
+                    <div data-aos="zoom-out" data-aos-delay="400" data-aos-once="true">
                         <div class="flex gap-4">
                             <span class="text-2xl font-semibold"
                                 style="font-family:'Playfair Display', serif;">2.</span>
@@ -168,7 +168,7 @@
                     </div>
 
                     {{-- 3 --}}
-                    <div>
+                    <div data-aos="zoom-out" data-aos-delay="600" data-aos-once="true">
                         <div class="flex gap-4">
                             <span class="text-2xl font-semibold"
                                 style="font-family:'Playfair Display', serif;">3.</span>
@@ -178,7 +178,7 @@
                     </div>
 
                     {{-- 4 --}}
-                    <div>
+                    <div data-aos="zoom-out" data-aos-delay="800" data-aos-once="true">
                         <div class="flex gap-4">
                             <span class="text-2xl font-semibold"
                                 style="font-family:'Playfair Display', serif;">4.</span>
@@ -188,7 +188,7 @@
                     </div>
 
                     {{-- 5 --}}
-                    <div>
+                    <div data-aos="zoom-out" data-aos-delay="1000" data-aos-once="true">
                         <div class="flex gap-4">
                             <span class="text-2xl font-semibold"
                                 style="font-family:'Playfair Display', serif;">5.</span>
@@ -198,7 +198,7 @@
                     </div>
 
                     {{-- 6 --}}
-                    <div>
+                    <div data-aos="zoom-out" data-aos-delay="1200" data-aos-once="true">
                         <div class="flex gap-4">
                             <span class="text-2xl font-semibold"
                                 style="font-family:'Playfair Display', serif;">6.</span>

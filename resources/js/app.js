@@ -1,5 +1,40 @@
 import "./bootstrap";
 
+// dari EmailJS dashboard
+import emailjs from "@emailjs/browser";
+emailjs.init("7ZOAwNXpHr-6V93-q");
+
+const form = document.getElementById("kontakForm");
+const notif = document.getElementById("notif");
+
+form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    notif.innerHTML = `
+        <div class="mb-4 p-3 bg-blue-100 text-blue-700 rounded-xl">
+            Mengirim pesan...
+        </div>
+    `;
+
+    emailjs
+        .sendForm("service_lemycsp", "template_sc6g5yo", form)
+        .then(() => {
+            notif.innerHTML = `
+                <div class="mb-4 p-3 bg-green-100 text-green-700 rounded-xl">
+                    Pesan berhasil dikirim!
+                </div>
+            `;
+            form.reset();
+        })
+        .catch(() => {
+            notif.innerHTML = `
+                <div class="mb-4 p-3 bg-red-100 text-red-700 rounded-xl">
+                    Terjadi kesalahan, coba lagi nanti.
+                </div>
+            `;
+        });
+});
+
 // import anime js versi 4
 import anime from "animejs/lib/anime.es.js";
 
@@ -56,25 +91,64 @@ window.whatsappPromo = function () {
 // produk
 window.productDetail = function () {
     return {
-        active: null,
-        activeId: null,
+        // --- UNTUK MENANDAI CARD AKTIF ---
+        activeId: null, // <--- DITAMBAHKAN
 
+        // DATA UTAMA
+        active: {
+            id: null,
+            title: "",
+            desc: "",
+            images: [],
+        },
+        swiper: null,
+
+        // --- SHOW DETAIL ---
         showDetail(data) {
             this.active = data;
-            this.activeId = data.id;
+            this.activeId = data.id; // <--- DITAMBAHKAN
 
-            // scroll ke grid produk, bukan ke bawah halaman
+            this.$nextTick(() => {
+                this.initSwiper();
+            });
+
             setTimeout(() => {
-                const target = document.querySelector("#produk-container");
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: "smooth",
-                        block: "start",
-                    });
-                }
-            }, 50);
+                document
+                    .querySelector(".product-swiper")
+                    ?.scrollIntoView({ behavior: "smooth", block: "center" });
+            }, 100);
         },
 
+        // --- SWIPER ---
+        initSwiper() {
+            if (this.swiper) {
+                this.swiper.destroy(true, true);
+                this.swiper = null;
+            }
+
+            this.$nextTick(() => {
+                setTimeout(() => {
+                    this.swiper = new Swiper(this.$refs.mySwiper, {
+                        modules: [Navigation],
+                        slidesPerView: 1,
+                        loop: true,
+                        navigation: {
+                            nextEl: this.$refs.nextBtn,
+                            prevEl: this.$refs.prevBtn,
+                        },
+                    });
+
+                    this.swiper.update();
+                }, 50);
+            });
+        },
+
+        goTo(i) {
+            if (!this.swiper) return;
+            this.swiper.slideToLoop(i);
+        },
+
+        // --- SHARE BUTTONS ---
         shareWA() {
             window.open(
                 `https://wa.me/?text=${encodeURIComponent(
@@ -182,56 +256,6 @@ const recentSwiper = new Swiper(".recentSwiper", {
         },
     },
 });
-
-window.productDetail = function () {
-    return {
-        active: {
-            id: null,
-            title: "",
-            desc: "",
-            images: [],
-        },
-
-        swiper: null,
-
-        showDetail(data) {
-            this.active = data;
-
-            this.$nextTick(() => {
-                this.initSwiper();
-            });
-
-            setTimeout(() => {
-                document
-                    .querySelector(".product-swiper")
-                    ?.scrollIntoView({ behavior: "smooth", block: "center" });
-            }, 100);
-        },
-
-        initSwiper() {
-            if (this.swiper) this.swiper.destroy(true, true);
-
-            this.$nextTick(() => {
-                this.swiper = new Swiper(this.$refs.mySwiper, {
-                    modules: [Navigation],
-                    slidesPerView: 1,
-                    loop: true,
-                    navigation: {
-                        nextEl: this.$refs.nextBtn,
-                        prevEl: this.$refs.prevBtn,
-                    },
-                });
-
-                this.swiper.update();
-            });
-        },
-
-        goTo(i) {
-            if (!this.swiper) return;
-            this.swiper.slideToLoop(i);
-        },
-    };
-};
 
 // navbar
 const menuBtn = document.getElementById("menuBtn");

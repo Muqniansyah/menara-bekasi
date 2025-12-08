@@ -73,4 +73,39 @@
     @include('layout.footer')
 </body>
 
+<!-- BUTTON WA -->
+<div id="wa-button"
+    class="fixed bottom-6 right-6 bg-green-600 w-14 h-14 rounded-full flex items-center justify-center cursor-pointer shadow-lg text-white"
+    onclick="toggleWA()">
+    <i class="bi bi-whatsapp text-3xl"></i>
+</div>
+
+<!-- POPUP WA -->
+<div id="wa-popup"
+    class="fixed bottom-24 right-6 w-80 bg-white rounded-xl shadow-xl p-4 hidden">
+
+    <h3 class="text-lg font-bold mb-2">Ajukan Penawaran</h3>
+    <p class="text-sm text-gray-500 mb-4">Klik salah satu tim kami:</p>
+
+    <div class="space-y-3">
+        <a href="https://wa.me/6285817298071?text=Halo saya ingin menanyakan..."
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center justify-between p-3 border rounded-lg hover:bg-gray-50 transition">
+            <div class="flex items-center gap-3">
+                <i class="bi bi-whatsapp text-green-600 text-xl"></i>
+                <span>Rizki Maulana</span>
+            </div>
+            <i class="bi bi-chevron-right"></i>
+        </a>
+    </div>
+</div>
+</body>
+
+<script>
+    function toggleWA() {
+        document.getElementById('wa-popup').classList.toggle('hidden');
+    }
+</script>
+
 </html>

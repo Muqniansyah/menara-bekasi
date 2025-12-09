@@ -82,9 +82,9 @@
 
 <!-- POPUP WA -->
 <div id="wa-popup"
-    class="fixed bottom-24 right-6 w-80 bg-white rounded-xl shadow-xl p-4 hidden">
+    class="fixed z-20 bottom-24 right-6 w-80 bg-white rounded-xl shadow-xl p-4 hidden">
 
-    <h3 class="text-lg font-bold mb-2">Ajukan Penawaran</h3>
+    <h3 class="text-lg font-bold mb-2">Ada yang perlu dibantu?</h3>
     <p class="text-sm text-gray-500 mb-4">Klik salah satu tim kami:</p>
 
     <div class="space-y-3">

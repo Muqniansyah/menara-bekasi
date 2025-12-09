@@ -40,6 +40,9 @@
 
                 <p class="text-gray-600 mt-3 md:mt-0 max-w-lg md:text-right md:pr-4">
                     Produk berkualitas yang diproduksi dengan standar terbaik untuk memenuhi kebutuhan industri Anda.
+                    <i class="inline md:hidden text-blue-600 underline underline-offset-4 decoration-dashed italic animate-pulse">
+                        Pilih Produk untuk melihat detail dari produk.
+                    </i>
                 </p>
             </div>
         </div>

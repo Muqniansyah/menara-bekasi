@@ -5,7 +5,7 @@
 <section class="relative w-full h-[45vh] md:h-[55vh] overflow-hidden">
     <!-- Background Image -->
     <img
-        src="{{ asset('images/produk-hero.jpeg') }}"
+        src="{{ img('images/produk-hero.jpeg') }}"
         alt="Produk Hero"
         class="absolute inset-0 w-full h-full object-cover">
 
@@ -57,15 +57,15 @@
                     desc: `Pallet kayu produksi kami terbuat dari berbagai macam jenis kayu dan plywood dengan berbagai 
                     macam ukuran dan sfesifikasi sesuai kebutuhan customer dengan beban muali 100 Kg sampai dengan 2500 Kg.`,
                     images: [
-                        '{{ asset('images/produk/pallet-kayu.jpg') }}',
-                        '{{ asset('images/produk/pallet-kayu-2.jpeg') }}',
+                        '{{ img('images/produk/pallet-kayu.jpg') }}',
+                        '{{ img('images/produk/pallet-kayu-2.jpeg') }}',
                     ]
                 })">
 
                 <div :class="activeId === 1 ? 'bg-blue-50 border-blue-600 shadow-xl scale-[1.03]' : 'bg-white shadow-sm'"
                     class="rounded-xl border transition p-6 group">
 
-                    <img src="{{ asset('images/produk/pallet-kayu-3d.png') }}"
+                    <img src="{{ img('images/produk/pallet-kayu-3d.png') }}"
                         class="w-full h-56 object-contain mb-6 group-hover:scale-105 transition">
 
                     <h3 class="text-xl font-semibold text-gray-900 font-['Playfair_Display']">Pallet Kayu</h3>
@@ -88,15 +88,15 @@
                     jenis pengencang (seperti paku), dan juga proses pengerjaannya. 
                     Jangan ragu untuk menghubungi kami guna mendiskusikan spesifikasi dan kebutuhan palet Anda secara lebih detail.`,
                     images: [
-                        '{{ asset('images/produk/kotak-kayu.jpg') }}',
-                        '{{ asset('images/produk/kotak-kayu-2.jpg') }}'
+                        '{{ img('images/produk/kotak-kayu.jpg') }}',
+                        '{{ img('images/produk/kotak-kayu-2.jpg') }}'
                     ]
                 })">
 
                 <div :class="activeId === 2 ? 'bg-blue-50 border-blue-600 shadow-xl scale-[1.03]' : 'bg-white shadow-sm'"
                     class="rounded-xl border transition p-6 group">
 
-                    <img src="{{ asset('images/produk/kotak-kayu-3d.png') }}"
+                    <img src="{{ img('images/produk/kotak-kayu-3d.png') }}"
                         class="w-full h-56 object-contain mb-6 group-hover:scale-105 transition">
 
                     <h3 class="text-xl font-semibold text-gray-900 font-['Playfair_Display']">Kotak Kayu</h3>
@@ -117,15 +117,15 @@
                     Plywood/triplek cukup kuat, ringan, dan cocok untuk ekspedisi dan transportasi. Selain itu, 
                     plywood/triplek memiliki permukaan yang bersih dan tekstur yang halus.`,
                     images: [
-                        '{{ asset('images/produk/triplek.jpg') }}',
-                        '{{ asset('images/produk/triplek-2.jpg') }}'
+                        '{{ img('images/produk/triplek.jpg') }}',
+                        '{{ img('images/produk/triplek-2.jpg') }}'
                     ]
                 })">
 
                 <div :class="activeId === 3 ? 'bg-blue-50 border-blue-600 shadow-xl scale-[1.03]' : 'bg-white shadow-sm'"
                     class="rounded-xl border transition p-6 group">
 
-                    <img src="{{ asset('images/produk/triplek-3d.png') }}"
+                    <img src="{{ img('images/produk/triplek-3d.png') }}"
                         class="w-full h-56 object-contain mb-6 group-hover:scale-105 transition">
 
                     <h3 class="text-xl font-semibold text-gray-900 font-['Playfair_Display']">Triplek Kayu</h3>
@@ -147,16 +147,16 @@
                     Balok kayu memiliki daya tahan tinggi, stabil, dan mampu menahan beban berat sehingga aman untuk 
                     kebutuhan industri maupun proyek besar.`,
                     images: [
-                        '{{ asset('images/produk/balok-kayu.jpg') }}',
-                        '{{ asset('images/produk/balok-kayu-2.jpg') }}',
-                        '{{ asset('images/produk/balok-kayu-3.jpg') }}'
+                        '{{ img('images/produk/balok-kayu.jpg') }}',
+                        '{{ img('images/produk/balok-kayu-2.jpg') }}',
+                        '{{ img('images/produk/balok-kayu-3.jpg') }}'
                     ]
                 })">
 
                 <div :class="activeId === 4 ? 'bg-blue-50 border-blue-600 shadow-xl scale-[1.03]' : 'bg-white shadow-sm'"
                     class="rounded-xl border transition p-6 group">
 
-                    <img src="{{ asset('images/produk/balok-kayu-3d.png') }}"
+                    <img src="{{ img('images/produk/balok-kayu-3d.png') }}"
                         class="w-full h-56 object-contain mb-6 group-hover:scale-105 transition">
 
                     <h3 class="text-xl font-semibold text-gray-900 font-['Playfair_Display']">Balok Kayu</h3>

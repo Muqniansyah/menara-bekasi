@@ -3,7 +3,7 @@
 
         <!-- LOGO + DESKRIPSI -->
         <div>
-            <img src="{{ asset('images/logo.png') }}" class="w-16 mb-4 rounded-[50%]">
+            <img src="{{ img('images/logo.png') }}" class="w-16 mb-4 rounded-[50%]">
             <p class="text-sm text-white/80 font-['Inter'] leading-relaxed">
                 Penyedia kayu berkualitas tinggi dengan proses terstandarisasi untuk kebutuhan industri maupun kebutuhan ekspor.
             </p>

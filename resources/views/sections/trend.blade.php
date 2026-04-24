@@ -25,7 +25,7 @@
                         rel="noopener noreferrer"
                         class="block bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                         <img
-                            src="{{ asset('images/trend/kemas.png') }}"
+                            src="{{ img('images/trend/kemas.png') }}"
                             class="w-full h-52 object-cover"
                             alt="Kemas">
 
@@ -49,7 +49,7 @@
                         rel="noopener noreferrer"
                         class="block bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                         <img
-                            src="{{ asset('images/trend/blog-kemas.jpeg') }}"
+                            src="{{ img('images/trend/blog-kemas.jpeg') }}"
                             class="w-full h-52 object-cover"
                             alt="blog-kemas">
 
@@ -72,7 +72,7 @@
                         rel="noopener noreferrer"
                         class="block bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                         <img
-                            src="{{ asset('images/trend/menarabekasi.png') }}"
+                            src="{{ img('images/trend/menarabekasi.png') }}"
                             class="w-full h-52 object-cover"
                             alt="blog-menara">
 
@@ -96,7 +96,7 @@
                         rel="noopener noreferrer"
                         class="block bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                         <img
-                            src="{{ asset('images/trend/web-9.jpg') }}"
+                            src="{{ img('images/trend/web-9.jpg') }}"
                             class="w-full h-52 object-cover"
                             alt="blogmenarabekasi">
 
@@ -120,7 +120,7 @@
                         rel="noopener noreferrer"
                         class="block bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                         <img
-                            src="{{ asset('images/trend/web-11.jpg') }}"
+                            src="{{ img('images/trend/web-11.jpg') }}"
                             class="w-full h-52 object-cover"
                             alt="blogmenarabekasi">
 

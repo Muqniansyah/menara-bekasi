@@ -5,7 +5,7 @@
 <section class="relative w-full h-[45vh] md:h-[55vh] overflow-hidden">
     <!-- Background Image -->
     <img
-        src="{{ asset('images/blog-hero.jpeg') }}"
+        src="{{ img('images/blog-hero.jpeg') }}"
         alt="Blog Hero"
         class="absolute inset-0 w-full h-full object-cover">
 
@@ -51,7 +51,7 @@
                 <div class="flex flex-col md:flex-row gap-6">
                     <div class="w-full md:w-5/12 relative">
                         <div class="w-full h-48 md:h-56 overflow-hidden rounded">
-                            <img src="{{ asset($post['image']) }}" class="w-full h-full object-cover">
+                            <img src="{{ img($post['image']) }}" class="w-full h-full object-cover">
                         </div>
 
                         <div class="absolute inset-0 bg-black/30"></div>

@@ -40,7 +40,7 @@
 
         <div class="blob-wrapper relative w-[260px] h-[260px] md:w-[420px] md:h-[420px]">
             <img
-                src="{{ asset('images/logo.png') }}"
+                src="{{ img('images/logo.png') }}"
                 alt="Header Image"
                 class="w-full h-full object-cover 
                 rounded-[40%_60%_70%_30%/30%_40%_60%_70%] shadow-2xl">

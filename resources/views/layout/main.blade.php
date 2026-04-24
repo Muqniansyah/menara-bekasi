@@ -30,7 +30,7 @@
     </script>
 
     <!-- icon -->
-    <link rel="icon" href="{{ asset('images/logo.png') }}" type="image/png">
+    <link rel="icon" href="{{ img('images/logo.png') }}" type="image/png">
 
     <!-- JSON-LD Struktur Perusahaan -->
     <script type="application/ld+json">
@@ -39,7 +39,7 @@
             "@context" => "https://schema.org",
             "@type" => "LocalBusiness",
             "name" => "PT. Menara Bekasi",
-            "image" => asset('images/logo.png'),
+            "image" => img('images/logo.png'),
             "description" => "PT. Menara Bekasi ...",
             "url" => url('/'),
             "address" => [
@@ -54,13 +54,26 @@
     </script>
 
     <!-- tailwind css -->
+    @if(app()->runningInConsole())
+    {{-- MODE EXPORT (STATIC) --}}
+    @php
+    $manifest = json_decode(file_get_contents(public_path('build/manifest.json')), true);
+    $css = $manifest['resources/css/app.css']['file'];
+    $js = $manifest['resources/js/app.js']['file'];
+    @endphp
+
+    <link rel="stylesheet" href="./build/{{ $css }}">
+    <script type="module" src="./build/{{ $js }}"></script>
+    @else
+    {{-- MODE LARAVEL --}}
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @endif
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
 
     <!-- my CSS -->
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ img('css/style.css') }}">
 </head>
 
 <body style="font-family: Inter, sans-serif;">

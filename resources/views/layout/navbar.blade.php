@@ -19,7 +19,7 @@
     </button>
 
     <!-- Logo -->
-    <img src="{{ asset('images/logo.png') }}" class="w-16 mb-10">
+    <img src="{{ img('images/logo.png') }}" class="w-16 mb-10">
 
     <!-- MENU LIST -->
     <div class="flex flex-col items-center space-y-8">

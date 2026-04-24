@@ -5,7 +5,7 @@
 <section class="relative w-full h-[45vh] md:h-[55vh] overflow-hidden">
     <!-- Background Image -->
     <img
-        src="{{ asset('images/tentang-hero.jpeg') }}"
+        src="{{ img('images/tentang-hero.jpeg') }}"
         alt="Tentang Hero"
         class="absolute inset-0 w-full h-full object-cover">
 
@@ -41,7 +41,7 @@
                 muted
                 loop
                 playsinline>
-                <source src="{{ asset('images/tentang/menara.mp4') }}" type="video/mp4">
+                <source src="{{ img('images/tentang/menara.mp4') }}" type="video/mp4">
             </video>
         </div>
 
@@ -100,7 +100,7 @@
                 muted
                 loop
                 playsinline>
-                <source src="{{ asset('images/tentang/layanan.mp4') }}" type="video/mp4">
+                <source src="{{ img('images/tentang/layanan.mp4') }}" type="video/mp4">
             </video>
         </div>
     </div>
@@ -236,7 +236,7 @@
                 data-aos-duration="800"
                 class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition group">
 
-                <img src="{{ asset('images/tentang/' . $kayu['foto']) }}"
+                <img src="{{ img('images/tentang/' . $kayu['foto']) }}"
                     class="w-full h-52 object-cover group-hover:scale-105 transition duration-500">
 
                 <div class="p-6">
@@ -289,7 +289,7 @@
             <div class="break-inside-avoid overflow-hidden rounded-xl shadow
                 gallery-item opacity-0 translate-y-6 gallery-delay-{{ $index + 1 }}">
                 <img
-                    src="{{ asset('images/' . $foto) }}"
+                    src="{{ img('images/' . $foto) }}"
                     class="w-full h-auto object-cover gallery-img cursor-pointer">
             </div>
 

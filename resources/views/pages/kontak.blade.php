@@ -6,7 +6,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center w-full max-w-7xl mx-auto">
         {{-- LEFT IMAGE --}}
         <div class="relative w-full flex justify-center md:justify-start">
-            <img src="{{ asset('images/kontak/kontak-header.png') }}"
+            <img src="{{ img('images/kontak/kontak-header.png') }}"
                 alt="model-kontak-header"
                 class="kontak-img w-[80%] md:w-[90%] max-w-lg object-contain select-none">
         </div>
@@ -269,7 +269,7 @@
         {{-- KANAN: GAMBAR --}}
         <div class="flex justify-center">
             <div class="kontak-bg rounded-3xl overflow-hidden shadow-lg">
-                <img src="{{ asset('images/navbar.png') }}"
+                <img src="{{ img('images/navbar.png') }}"
                     class="w-full h-full object-cover animate-zoom" alt="Contact Illustration">
             </div>
         </div>
@@ -299,7 +299,7 @@
 
         <div class="relative bg-white w-[480px] md:w-[520px] rounded-2xl shadow-2xl border p-8 flex items-start gap-5">
             <!-- Foto -->
-            <img src="{{ asset('images/kontak/menara.png') }}"
+            <img src="{{ img('images/kontak/menara.png') }}"
                 class="w-20 h-20 rounded-full object-cover shadow">
 
             <div class="flex-1">

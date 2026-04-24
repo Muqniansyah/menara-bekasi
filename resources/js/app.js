@@ -69,14 +69,13 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 window.whatsappPromo = function () {
     return {
         show: false,
-        delay: 3000, // muncul setelah 3 detik
+        delay: 3000,
 
         init() {
             const lastShown = localStorage.getItem("promoLastShown");
             const now = Date.now();
             const oneDay = 24 * 60 * 60 * 1000;
 
-            // Jika belum pernah muncul atau sudah lewat 24 jam
             if (!lastShown || now - lastShown > oneDay) {
                 setTimeout(() => {
                     this.show = true;
@@ -94,10 +93,8 @@ window.whatsappPromo = function () {
 // produk
 window.productDetail = function () {
     return {
-        // --- UNTUK MENANDAI CARD AKTIF ---
-        activeId: null, // <--- DITAMBAHKAN
+        activeId: null,
 
-        // DATA UTAMA
         active: {
             id: null,
             title: "",
@@ -106,10 +103,9 @@ window.productDetail = function () {
         },
         swiper: null,
 
-        // --- SHOW DETAIL ---
         showDetail(data) {
             this.active = data;
-            this.activeId = data.id; // <--- DITAMBAHKAN
+            this.activeId = data.id;
 
             this.$nextTick(() => {
                 this.initSwiper();
@@ -122,7 +118,6 @@ window.productDetail = function () {
             }, 100);
         },
 
-        // --- SWIPER ---
         initSwiper() {
             if (this.swiper) {
                 this.swiper.destroy(true, true);
@@ -131,8 +126,8 @@ window.productDetail = function () {
 
             this.$nextTick(() => {
                 setTimeout(() => {
+                    // Pakai bundle — tidak perlu modules: [Navigation]
                     this.swiper = new Swiper(this.$refs.mySwiper, {
-                        modules: [Navigation],
                         slidesPerView: 1,
                         loop: true,
                         navigation: {
@@ -151,20 +146,19 @@ window.productDetail = function () {
             this.swiper.slideToLoop(i);
         },
 
-        // --- SHARE BUTTONS ---
         shareWA() {
             window.open(
                 `https://wa.me/?text=${encodeURIComponent(
-                    this.active.title + " - " + window.location.href
-                )}`
+                    this.active.title + " - " + window.location.href,
+                )}`,
             );
         },
 
         shareFB() {
             window.open(
                 `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-                    window.location.href
-                )}`
+                    window.location.href,
+                )}`,
             );
         },
 
@@ -177,9 +171,11 @@ window.productDetail = function () {
 
 // alpine js
 import Alpine from "alpinejs";
+import Collapse from "@alpinejs/collapse";
 
 window.Alpine = Alpine;
 
+Alpine.plugin(Collapse);
 Alpine.start();
 
 // animejs jalan setelah Alpine untuk animasi teks header
@@ -189,7 +185,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     text.innerHTML = text.textContent.replace(
         /\S/g,
-        "<span class='letter'>$&</span>"
+        "<span class='letter'>$&</span>",
     );
 
     anime.timeline().add({
@@ -207,57 +203,72 @@ document.addEventListener("DOMContentLoaded", () => {
     feather.replace();
 });
 
-// swiper js
+// swiper js — gunakan bundle saja, tidak perlu import Navigation terpisah
 import Swiper from "swiper/bundle";
 import "swiper/css/bundle";
-import { Navigation } from "swiper/modules";
-const recentSwiper = new Swiper(".recentSwiper", {
-    slidesPerView: 1,
-    spaceBetween: 20,
-    loop: true,
 
-    autoplay: {
-        delay: 2500,
-        disableOnInteraction: false,
-    },
+document.addEventListener("DOMContentLoaded", () => {
+    const swiperEl = document.querySelector(".recentSwiper");
+    if (swiperEl) {
+        const recentSwiper = new Swiper(swiperEl, {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            loop: true,
 
-    breakpoints: {
-        640: { slidesPerView: 2 },
-        1024: { slidesPerView: 3 },
-        1280: { slidesPerView: 4 },
-    },
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
+            },
 
-    navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-    },
+            breakpoints: {
+                640: { slidesPerView: 2 },
+                1024: { slidesPerView: 3 },
+                1280: { slidesPerView: 4 },
+            },
 
-    on: {
-        init: function () {
-            gsap.fromTo(
-                this.slides[this.activeIndex],
-                { scale: 0.9, opacity: 0 },
-                { scale: 1, opacity: 1, duration: 0.8, ease: "power2.out" }
-            );
-        },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
 
-        slideChange: function () {
-            this.slides.forEach((slide) => {
-                gsap.to(slide, {
-                    scale: 1,
-                    opacity: 0.7,
-                    duration: 0.6,
-                    ease: "power1.out",
-                });
-            });
+            on: {
+                init: function () {
+                    gsap.fromTo(
+                        this.slides[this.activeIndex],
+                        { scale: 0.9, opacity: 0 },
+                        {
+                            scale: 1,
+                            opacity: 1,
+                            duration: 0.8,
+                            ease: "power2.out",
+                        },
+                    );
+                },
 
-            gsap.fromTo(
-                this.slides[this.activeIndex],
-                { scale: 0.9, opacity: 0 },
-                { scale: 1, opacity: 1, duration: 0.8, ease: "power2.out" }
-            );
-        },
-    },
+                slideChange: function () {
+                    this.slides.forEach((slide) => {
+                        gsap.to(slide, {
+                            scale: 1,
+                            opacity: 0.7,
+                            duration: 0.6,
+                            ease: "power1.out",
+                        });
+                    });
+
+                    gsap.fromTo(
+                        this.slides[this.activeIndex],
+                        { scale: 0.9, opacity: 0 },
+                        {
+                            scale: 1,
+                            opacity: 1,
+                            duration: 0.8,
+                            ease: "power2.out",
+                        },
+                    );
+                },
+            },
+        });
+    }
 });
 
 // navbar
@@ -265,16 +276,19 @@ const menuBtn = document.getElementById("menuBtn");
 const closeBtn = document.getElementById("closeBtn");
 const menuOverlay = document.getElementById("menuOverlay");
 
-menuBtn.onclick = () => {
-    menuOverlay.classList.remove("translate-y-[100vh]");
-};
+if (menuBtn && closeBtn && menuOverlay) {
+    menuBtn.onclick = () => {
+        menuOverlay.classList.remove("translate-y-[100vh]");
+    };
 
-closeBtn.onclick = () => {
-    menuOverlay.classList.add("translate-y-[100vh]");
-};
+    closeBtn.onclick = () => {
+        menuOverlay.classList.add("translate-y-[100vh]");
+    };
+}
 
 window.addEventListener("scroll", () => {
     const navbar = document.getElementById("navbar");
+    if (!navbar) return;
 
     if (window.scrollY > 10) {
         navbar.classList.add("bg-[#C8A27A]", "shadow-md");
@@ -283,111 +297,98 @@ window.addEventListener("scroll", () => {
     }
 });
 
-// kontak (GetButton.io)
-// (function () {
-//     var options = {
-//         whatsapp: "+6285817298071",
-//         call_to_action: "Hai, Ada yang bisa saya bantu?",
-//         position: "right",
-//     };
-//     var proto = document.location.protocol,
-//         host = "getbutton.io",
-//         url = proto + "//static." + host;
-//     var s = document.createElement("script");
-//     s.type = "text/javascript";
-//     s.async = true;
-//     s.src = url + "/widget-send-button/js/init.js";
-//     s.onload = function () {
-//         WhWidgetSendButton.init(host, proto, options);
-//     };
-//     var x = document.getElementsByTagName("script")[0];
-//     x.parentNode.insertBefore(s, x);
-// })();
-
 // animasi gsap
 document.addEventListener("DOMContentLoaded", () => {
-    // kontak gsap
-    gsap.to(".kontak-img", {
-        y: -20, // gerak naik 20px
-        duration: 3, // lamanya satu cycle
-        ease: "power1.inOut",
-        repeat: -1, // infinite
-        yoyo: true, // naik-turun
-    });
+    // kontak gsap — hanya jalan kalau elemen ada
+    if (document.querySelector(".kontak-img")) {
+        gsap.to(".kontak-img", {
+            y: -20,
+            duration: 3,
+            ease: "power1.inOut",
+            repeat: -1,
+            yoyo: true,
+        });
+    }
 
-    // Animasi untuk overlay (gelap & gold) - tentang gsap
-    gsap.to(".tentang .bg-black\\/40, .tentang .bg-\\[\\#C8A27A\\]\\/20", {
-        scrollTrigger: {
-            trigger: "#tentang",
-            start: "top 85%",
-        },
-        opacity: 0.6,
-        duration: 1.5,
-        ease: "power2.out",
-    });
+    // tentang gsap — hanya jalan kalau section #tentang ada
+    if (document.querySelector("#tentang")) {
+        gsap.to(".tentang .bg-black\\/40, .tentang .bg-\\[\\#C8A27A\\]\\/20", {
+            scrollTrigger: {
+                trigger: "#tentang",
+                start: "top 85%",
+            },
+            opacity: 0.6,
+            duration: 1.5,
+            ease: "power2.out",
+        });
 
-    // Animasi untuk paragraf <p> - tentang gsap
-    gsap.from("#tentang p", {
-        scrollTrigger: {
-            trigger: "#tentang",
-            start: "top 80%",
-        },
-        opacity: 0,
-        y: 50,
-        duration: 1.2,
-        ease: "power3.out",
-    });
+        gsap.from("#tentang p", {
+            scrollTrigger: {
+                trigger: "#tentang",
+                start: "top 80%",
+            },
+            opacity: 0,
+            y: 50,
+            duration: 1.2,
+            ease: "power3.out",
+        });
+    }
 
-    // animasi header pada pages
-    const text = new SplitType("#judul", { types: "chars" });
-    gsap.set("#judul", { visibility: "visible" });
-    gsap.from(text.chars, {
-        opacity: 0,
-        y: 20,
-        stagger: 0.15, // jeda antar huruf → efek ketik
-        duration: 0.8, // animasi per karakter lebih lama
-        ease: "power2.out",
-    });
+    // animasi header pada pages — hanya jalan kalau #judul ada
+    if (document.querySelector("#judul")) {
+        const text = new SplitType("#judul", { types: "chars" });
+        gsap.set("#judul", { visibility: "visible" });
+        gsap.from(text.chars, {
+            opacity: 0,
+            y: 20,
+            stagger: 0.15,
+            duration: 0.8,
+            ease: "power2.out",
+        });
+    }
 });
 
 // (Scroll Animation + Lightbox) tentang galeri
 document.addEventListener("DOMContentLoaded", () => {
-    /* --- ANIMASI SAAT SCROLL (INTERSECTION OBSERVER) --- */
+    // animasi scroll gallery
     const items = document.querySelectorAll(".gallery-item");
 
-    const observer = new IntersectionObserver(
-        (entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animation =
-                        "fadeUp 0.8s ease-out forwards";
-                    observer.unobserve(entry.target);
-                }
-            });
-        },
-        { threshold: 0.2 }
-    );
+    if (items.length > 0) {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation =
+                            "fadeUp 0.8s ease-out forwards";
+                        observer.unobserve(entry.target);
+                    }
+                });
+            },
+            { threshold: 0.2 },
+        );
 
-    items.forEach((item) => observer.observe(item));
+        items.forEach((item) => observer.observe(item));
+    }
 
-    /* --- LIGHTBOX FULLSCREEN --- */
+    // lightbox fullscreen — hanya jalan kalau elemen ada
     const images = document.querySelectorAll(".gallery-img");
     const lightbox = document.getElementById("lightbox");
     const lightboxImg = document.getElementById("lightbox-img");
 
-    images.forEach((img) => {
-        img.addEventListener("click", () => {
-            lightboxImg.src = img.src;
-            lightbox.classList.remove("hidden");
-            lightbox.classList.add("flex");
+    if (lightbox && lightboxImg && images.length > 0) {
+        images.forEach((img) => {
+            img.addEventListener("click", () => {
+                lightboxImg.src = img.src;
+                lightbox.classList.remove("hidden");
+                lightbox.classList.add("flex");
+            });
         });
-    });
 
-    // Tutup bila klik area luar
-    lightbox.addEventListener("click", (e) => {
-        if (e.target !== lightboxImg) {
-            lightbox.classList.add("hidden");
-            lightbox.classList.remove("flex");
-        }
-    });
+        lightbox.addEventListener("click", (e) => {
+            if (e.target !== lightboxImg) {
+                lightbox.classList.add("hidden");
+                lightbox.classList.remove("flex");
+            }
+        });
+    }
 });

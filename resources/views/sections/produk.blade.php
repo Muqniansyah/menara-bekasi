@@ -20,7 +20,7 @@
             <div class="group" data-aos="flip-left">
                 <div class="relative overflow-hidden rounded-sm shadow bg-white">
                     <img
-                        src="{{ asset('images/produk/pallet-kayu-3d.png') }}"
+                        src="{{ img('images/produk/pallet-kayu-3d.png') }}"
                         alt="pallet-kayu"
                         class="w-full h-80 object-contain -translate-y-6
                                group-hover:scale-105 transition duration-500">
@@ -41,7 +41,7 @@
             <div class="group" data-aos="flip-up">
                 <div class="relative overflow-hidden rounded-sm shadow bg-white">
                     <img
-                        src="{{ asset('images/produk/kotak-kayu-3d.png') }}"
+                        src="{{ img('images/produk/kotak-kayu-3d.png') }}"
                         alt="kotak-kayu"
                         class="w-full h-80 object-contain -translate-y-6 
                                group-hover:scale-105 transition duration-500">
@@ -62,7 +62,7 @@
             <div class="group" data-aos="flip-right">
                 <div class="relative overflow-hidden rounded-sm shadow bg-white">
                     <img
-                        src="{{ asset('images/produk/triplek-3d.png') }}"
+                        src="{{ img('images/produk/triplek-3d.png') }}"
                         alt="triplek-kayu"
                         class="w-full h-80 object-contain -translate-y-6
                                group-hover:scale-105 transition duration-500">

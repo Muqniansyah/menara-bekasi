@@ -30,7 +30,7 @@
     </script>
 
     <!-- icon -->
-    <link rel="icon" href="images/logo.png" type="image/png">
+    <link rel="icon" href="/images/logo.png">
 
     <!-- JSON-LD Struktur Perusahaan -->
     <script type="application/ld+json">
@@ -53,14 +53,14 @@
     <!-- tailwind css -->
         
     
-    <link rel="stylesheet" href="./build/assets/app-CRce9jLg.css">
-    <script type="module" src="./build/assets/app-CTewMraI.js"></script>
+    <link rel="stylesheet" href="/build/assets/app-BO2zBZIU.css">
+    <script type="module" src="/build/assets/app-CcPVP5Jh.js"></script>
     
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
 
     <!-- my CSS -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body style="font-family: Inter, sans-serif;">
@@ -85,7 +85,7 @@
     </button>
 
     <!-- Logo -->
-    <img src="images/logo.png" class="w-16 mb-10">
+    <img src="/images/logo.png" class="w-16 mb-10">
 
     <!-- MENU LIST -->
     <div class="flex flex-col items-center space-y-8">
@@ -143,7 +143,7 @@
 <section class="relative w-full h-[45vh] md:h-[55vh] overflow-hidden">
     <!-- Background Image -->
     <img
-        src="images/produk-hero.jpeg"
+        src="/images/produk-hero.jpeg"
         alt="Produk Hero"
         class="absolute inset-0 w-full h-full object-cover">
 
@@ -203,7 +203,7 @@
                 <div :class="activeId === 1 ? 'bg-blue-50 border-blue-600 shadow-xl scale-[1.03]' : 'bg-white shadow-sm'"
                     class="rounded-xl border transition p-6 group">
 
-                    <img src="images/produk/pallet-kayu-3d.png"
+                    <img src="/images/produk/pallet-kayu-3d.png"
                         class="w-full h-56 object-contain mb-6 group-hover:scale-105 transition">
 
                     <h3 class="text-xl font-semibold text-gray-900 font-['Playfair_Display']">Pallet Kayu</h3>
@@ -234,7 +234,7 @@
                 <div :class="activeId === 2 ? 'bg-blue-50 border-blue-600 shadow-xl scale-[1.03]' : 'bg-white shadow-sm'"
                     class="rounded-xl border transition p-6 group">
 
-                    <img src="images/produk/kotak-kayu-3d.png"
+                    <img src="/images/produk/kotak-kayu-3d.png"
                         class="w-full h-56 object-contain mb-6 group-hover:scale-105 transition">
 
                     <h3 class="text-xl font-semibold text-gray-900 font-['Playfair_Display']">Kotak Kayu</h3>
@@ -263,7 +263,7 @@
                 <div :class="activeId === 3 ? 'bg-blue-50 border-blue-600 shadow-xl scale-[1.03]' : 'bg-white shadow-sm'"
                     class="rounded-xl border transition p-6 group">
 
-                    <img src="images/produk/triplek-3d.png"
+                    <img src="/images/produk/triplek-3d.png"
                         class="w-full h-56 object-contain mb-6 group-hover:scale-105 transition">
 
                     <h3 class="text-xl font-semibold text-gray-900 font-['Playfair_Display']">Triplek Kayu</h3>
@@ -294,7 +294,7 @@
                 <div :class="activeId === 4 ? 'bg-blue-50 border-blue-600 shadow-xl scale-[1.03]' : 'bg-white shadow-sm'"
                     class="rounded-xl border transition p-6 group">
 
-                    <img src="images/produk/balok-kayu-3d.png"
+                    <img src="/images/produk/balok-kayu-3d.png"
                         class="w-full h-56 object-contain mb-6 group-hover:scale-105 transition">
 
                     <h3 class="text-xl font-semibold text-gray-900 font-['Playfair_Display']">Balok Kayu</h3>
@@ -318,7 +318,7 @@
                             <template x-if="active.images && active.images.length">
                                 <template x-for="img in active.images" :key="img">
                                     <div class="swiper-slide">
-                                        <img :src="img" class="w-full h-96 object-cover rounded-2xl shadow-lg border border-gray-200">
+                                        <img :src="/img" class="w-full h-96 object-cover rounded-2xl shadow-lg border border-gray-200">
                                     </div>
                                 </template>
                             </template>
@@ -346,7 +346,7 @@
                     
                     <div class="flex gap-4 mt-5">
                         <template x-for="(t, i) in active.images">
-                            <img :src="t"
+                            <img :src="/t"
                                 @click="goTo(i)"
                                 :class="[
                                 'w-20 h-20 rounded-xl object-cover cursor-pointer transition-all duration-300',
@@ -423,7 +423,7 @@
 
         <!-- LOGO + DESKRIPSI -->
         <div>
-            <img src="images/logo.png" class="w-16 mb-4 rounded-[50%]">
+            <img src="/images/logo.png" class="w-16 mb-4 rounded-[50%]">
             <p class="text-sm text-white/80 font-['Inter'] leading-relaxed">
                 Penyedia kayu berkualitas tinggi dengan proses terstandarisasi untuk kebutuhan industri maupun kebutuhan ekspor.
             </p>

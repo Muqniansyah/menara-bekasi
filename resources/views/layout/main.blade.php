@@ -30,7 +30,7 @@
     </script>
 
     <!-- icon -->
-    <link rel="icon" href="{{ img('images/logo.png') }}" type="image/png">
+    <link rel="icon" href="/images/logo.png">
 
     <!-- JSON-LD Struktur Perusahaan -->
     <script type="application/ld+json">
@@ -62,8 +62,8 @@
     $js = $manifest['resources/js/app.js']['file'];
     @endphp
 
-    <link rel="stylesheet" href="./build/{{ $css }}">
-    <script type="module" src="./build/{{ $js }}"></script>
+    <link rel="stylesheet" href="/build/{{ $css }}">
+    <script type="module" src="/build/{{ $js }}"></script>
     @else
     {{-- MODE LARAVEL --}}
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -73,7 +73,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
 
     <!-- my CSS -->
-    <link rel="stylesheet" href="{{ img('css/style.css') }}">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body style="font-family: Inter, sans-serif;">

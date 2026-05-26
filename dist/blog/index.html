@@ -11,7 +11,7 @@
     <meta name="description" content="PT. Menara Bekasi adalah perusahaan resmi terdaftar ID-139 penyedia pallet kayu, dunnage, peti kayu, dan layanan sertifikasi ISPM 15 berstandar internasional untuk kebutuhan ekspor." />
 
     <!-- CANONICAL -->
-    <link rel="canonical" href="http://localhost/blog" />
+    <link rel="canonical" href="https://menara-bekasi.web.app/blog" />
 
     <!-- GSC -->
     <meta name="google-site-verification" content="5QAYWNPCrfnMCcRo-tEkUuPYI1iv802CaTQl2gSufHg" />
@@ -40,7 +40,7 @@
     "name": "PT. Menara Bekasi",
     "image": "images/logo.png",
     "description": "PT. Menara Bekasi ...",
-    "url": "http://localhost",
+    "url": "https://menara-bekasi.web.app",
     "address": {
         "@type": "PostalAddress",
         "addressLocality": "Bekasi",
@@ -53,11 +53,14 @@
     <!-- tailwind css -->
         
     
-    <link rel="stylesheet" href="/build/assets/app-BO2zBZIU.css">
-    <script type="module" src="/build/assets/app-CcPVP5Jh.js"></script>
+    <link rel="stylesheet" href="/build/assets/app-B5yLru27.css">
+    <script type="module" src="/build/assets/app-DYHfGd0Z.js"></script>
     
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap Icons CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <!-- my CSS -->
     <link rel="stylesheet" href="/css/style.css">
@@ -85,7 +88,7 @@
     </button>
 
     <!-- Logo -->
-    <img src="/images/logo.png" class="w-16 mb-10">
+    <img src="images/logo.png" class="w-16 mb-10">
 
     <!-- MENU LIST -->
     <div class="flex flex-col items-center space-y-8">
@@ -141,25 +144,22 @@
     <main>
         
 <section class="relative w-full h-[45vh] md:h-[55vh] overflow-hidden">
-    <!-- Background Image -->
     <img
-        src="/images/blog-hero.jpeg"
+        src="images/blog-hero.jpeg"
         alt="Blog Hero"
         class="absolute inset-0 w-full h-full object-cover">
 
-    <!-- Gradient Overlay (White → Transparent → Black Transparan) -->
     <div
         class="absolute inset-0"
         style="background: linear-gradient(
             to bottom,
-            rgba(255,255,255,0.55) 0%,   /* putih terang di atas */
-            rgba(255,255,255,0.15) 20%,  /* memudar */
-            rgba(0,0,0,0.25) 70%,        /* mulai gelap */
-            rgba(0,0,0,0.35) 100%        /* paling gelap bawah */
+            rgba(255,255,255,0.55) 0%,
+            rgba(255,255,255,0.15) 20%,
+            rgba(0,0,0,0.25) 70%,
+            rgba(0,0,0,0.35) 100%
         );">
     </div>
 
-    <!-- Center Text -->
     <div class="relative z-10 flex items-center justify-center h-full">
         <h1 id="judul" class="text-white text-4xl md:text-6xl font-['Playfair_Display'] tracking-wide">
             Blog
@@ -169,251 +169,103 @@
 
 
 <div class="w-full max-w-6xl mx-auto py-12 px-4 md:px-0">
-    <div class="flex flex-col md:flex-row gap-10 mt-10">
+    <div
+        class="flex flex-col md:flex-row gap-10 mt-10"
+        x-data="blogPagination()"
+        x-init="init()">
         
         <div class="w-full md:w-8/12 space-y-12">
+
             
-                        <div class="border-b pb-10">
-                <h2 class="text-center text-base font-bold tracking-wide font-['Playfair_Display']">BLOG</h2>
-                <h3 class="text-2xl font-semibold mb-2 text-center font-['Playfair_Display']">
-                    Penanganan Kayu Pallet ISPM 15 untuk Ekspor Sukses
-                </h3>
+            <template x-for="post in currentPagePosts()" :key="post.title">
+                <div class="border-b pb-10">
+                    <h2 class="text-center text-base font-bold tracking-wide font-['Playfair_Display']">BLOG</h2>
+                    <h3 class="text-2xl font-semibold mb-2 text-center font-['Playfair_Display']" x-text="post.title"></h3>
 
-                <div class="w-16 h-0.5 bg-gray-300 mx-auto my-4"></div>
+                    <div class="w-16 h-0.5 bg-gray-300 mx-auto my-4"></div>
 
-                <p class="text-sm text-gray-500 mb-6 text-center">
-                    Diposting pada 06 September 2025 oleh Menara Bekasi
-                </p>
+                    <p class="text-sm text-gray-500 mb-6 text-center">
+                        Diposting pada <span x-text="post.date"></span> oleh Menara Bekasi
+                    </p>
 
-                <div class="flex flex-col md:flex-row gap-6">
-                    <div class="w-full md:w-5/12 relative">
-                        <div class="w-full h-48 md:h-56 overflow-hidden rounded">
-                            <img src="/images/blog/web-1.jpg" class="w-full h-full object-cover">
+                    <div class="flex flex-col md:flex-row gap-6">
+                        <div class="w-full md:w-5/12 relative">
+                            <div class="w-full h-48 md:h-56 overflow-hidden rounded">
+                                <img :src="post.image" class="w-full h-full object-cover">
+                            </div>
+
+                            <div class="absolute inset-0 bg-black/30"></div>
+
+                            <div class="absolute left-3 top-3 flex flex-col items-center">
+                                <span class="block w-px h-6 bg-white/70"></span>
+                                <p class="text-3xl font-bold text-white leading-none mt-1" x-text="post.day"></p>
+                                <p class="text-xs uppercase tracking-wide text-white mt-0.5" x-text="post.month"></p>
+                                <span class="block w-px h-6 bg-white/70 mt-1"></span>
+                            </div>
                         </div>
 
-                        <div class="absolute inset-0 bg-black/30"></div>
+                        <div class="w-full md:w-7/12">
+                            <p class="text-gray-600 leading-relaxed" x-text="post.excerpt"></p>
 
-                        <div class="absolute left-3 top-3 flex flex-col items-center">
-                            <span class="block w-px h-6 bg-white/70"></span>
-                            <p class="text-3xl font-bold text-white leading-none mt-1">06</p>
-                            <p class="text-xs uppercase tracking-wide text-white mt-0.5">Sep</p>
-                            <span class="block w-px h-6 bg-white/70 mt-1"></span>
+                            <a :href="post.link" target="_blank" rel="noopener noreferrer" class="inline-block mt-4">
+                                <button class="px-6 py-2 border rounded hover:bg-gray-100 transition cursor-pointer">
+                                    Lanjutkan Membaca →
+                                </button>
+                            </a>
                         </div>
-                    </div>
-
-                    <div class="w-full md:w-7/12">
-                        <p class="text-gray-600 leading-relaxed">
-                            Palet kayu yang rusak, terutama yang memiliki paku berkarat, 
-                dapat menyebabkan cedera serius bagi pekerja. 
-                Palet berat juga bisa menimpa pekerja jika tidak disimpan atau dipindahkan dengan benar.
-                        </p>
-
-                        <a href="https://menarabekasi.netlify.app/" target="_blank" rel="noopener noreferrer" class="inline-block mt-4">
-                            <button class="px-6 py-2 border rounded hover:bg-gray-100 transition cursor-pointer">
-                                Lanjutkan Membaca →
-                            </button>
-                        </a>
                     </div>
                 </div>
-            </div>
-                        <div class="border-b pb-10">
-                <h2 class="text-center text-base font-bold tracking-wide font-['Playfair_Display']">BLOG</h2>
-                <h3 class="text-2xl font-semibold mb-2 text-center font-['Playfair_Display']">
-                    Pemilihan Jenis Kayu Ekspor Legal &amp; Standar ISPM 15
-                </h3>
+            </template>
 
-                <div class="w-16 h-0.5 bg-gray-300 mx-auto my-4"></div>
-
-                <p class="text-sm text-gray-500 mb-6 text-center">
-                    Diposting pada 15 September 2025 oleh Menara Bekasi
-                </p>
-
-                <div class="flex flex-col md:flex-row gap-6">
-                    <div class="w-full md:w-5/12 relative">
-                        <div class="w-full h-48 md:h-56 overflow-hidden rounded">
-                            <img src="/images/blog/web-2.jpg" class="w-full h-full object-cover">
-                        </div>
-
-                        <div class="absolute inset-0 bg-black/30"></div>
-
-                        <div class="absolute left-3 top-3 flex flex-col items-center">
-                            <span class="block w-px h-6 bg-white/70"></span>
-                            <p class="text-3xl font-bold text-white leading-none mt-1">15</p>
-                            <p class="text-xs uppercase tracking-wide text-white mt-0.5">Sep</p>
-                            <span class="block w-px h-6 bg-white/70 mt-1"></span>
-                        </div>
-                    </div>
-
-                    <div class="w-full md:w-7/12">
-                        <p class="text-gray-600 leading-relaxed">
-                            Pemilihan kayu harus mempertimbangkan jenis produk dan negara tujuan. 
-                Kayu lunak seperti pine lebih ringan dan ekonomis, 
-                sedangkan kayu keras seperti mahoni atau jati lebih awet dan cocok untuk produk premium.
-                        </p>
-
-                        <a href="https://muqniansyah.github.io/menara-blog/" target="_blank" rel="noopener noreferrer" class="inline-block mt-4">
-                            <button class="px-6 py-2 border rounded hover:bg-gray-100 transition cursor-pointer">
-                                Lanjutkan Membaca →
-                            </button>
-                        </a>
-                    </div>
-                </div>
-            </div>
-                        <div class="border-b pb-10">
-                <h2 class="text-center text-base font-bold tracking-wide font-['Playfair_Display']">BLOG</h2>
-                <h3 class="text-2xl font-semibold mb-2 text-center font-['Playfair_Display']">
-                    Kendala dalam Kerjasama Bisnis dengan Vendor: Tantangan &amp; Solusi
-                </h3>
-
-                <div class="w-16 h-0.5 bg-gray-300 mx-auto my-4"></div>
-
-                <p class="text-sm text-gray-500 mb-6 text-center">
-                    Diposting pada 22 September 2025 oleh Menara Bekasi
-                </p>
-
-                <div class="flex flex-col md:flex-row gap-6">
-                    <div class="w-full md:w-5/12 relative">
-                        <div class="w-full h-48 md:h-56 overflow-hidden rounded">
-                            <img src="/images/blog/web-3.jpg" class="w-full h-full object-cover">
-                        </div>
-
-                        <div class="absolute inset-0 bg-black/30"></div>
-
-                        <div class="absolute left-3 top-3 flex flex-col items-center">
-                            <span class="block w-px h-6 bg-white/70"></span>
-                            <p class="text-3xl font-bold text-white leading-none mt-1">22</p>
-                            <p class="text-xs uppercase tracking-wide text-white mt-0.5">Sep</p>
-                            <span class="block w-px h-6 bg-white/70 mt-1"></span>
-                        </div>
-                    </div>
-
-                    <div class="w-full md:w-7/12">
-                        <p class="text-gray-600 leading-relaxed">
-                            Hubungan dengan vendor yang baik dapat membantu perusahaan lebih efisien, 
-                mengurangi biaya, serta meningkatkan daya saing di pasar.
-                        </p>
-
-                        <a href="https://menarabekasi.vercel.app/" target="_blank" rel="noopener noreferrer" class="inline-block mt-4">
-                            <button class="px-6 py-2 border rounded hover:bg-gray-100 transition cursor-pointer">
-                                Lanjutkan Membaca →
-                            </button>
-                        </a>
-                    </div>
-                </div>
-            </div>
-                        <div class="border-b pb-10">
-                <h2 class="text-center text-base font-bold tracking-wide font-['Playfair_Display']">BLOG</h2>
-                <h3 class="text-2xl font-semibold mb-2 text-center font-['Playfair_Display']">
-                    Perbedaan Kayu ISPM 15 dan Non ISPM 15
-                </h3>
-
-                <div class="w-16 h-0.5 bg-gray-300 mx-auto my-4"></div>
-
-                <p class="text-sm text-gray-500 mb-6 text-center">
-                    Diposting pada 29 September 2025 oleh Menara Bekasi
-                </p>
-
-                <div class="flex flex-col md:flex-row gap-6">
-                    <div class="w-full md:w-5/12 relative">
-                        <div class="w-full h-48 md:h-56 overflow-hidden rounded">
-                            <img src="/images/blog/web-4.jpg" class="w-full h-full object-cover">
-                        </div>
-
-                        <div class="absolute inset-0 bg-black/30"></div>
-
-                        <div class="absolute left-3 top-3 flex flex-col items-center">
-                            <span class="block w-px h-6 bg-white/70"></span>
-                            <p class="text-3xl font-bold text-white leading-none mt-1">29</p>
-                            <p class="text-xs uppercase tracking-wide text-white mt-0.5">Sep</p>
-                            <span class="block w-px h-6 bg-white/70 mt-1"></span>
-                        </div>
-                    </div>
-
-                    <div class="w-full md:w-7/12">
-                        <p class="text-gray-600 leading-relaxed">
-                            Setiap kayu yang sudah memenuhi standar ISPM 15 akan diberi tanda khusus berupa logo resmi yang diakui secara global. 
-                Dengan adanya sertifikasi ini, kayu jadi aman digunakan untuk ekspor tanpa risiko ditolak di negara tujuan.
-                        </p>
-
-                        <a href="https://blogmenara.pages.dev/" target="_blank" rel="noopener noreferrer" class="inline-block mt-4">
-                            <button class="px-6 py-2 border rounded hover:bg-gray-100 transition cursor-pointer">
-                                Lanjutkan Membaca →
-                            </button>
-                        </a>
-                    </div>
-                </div>
-            </div>
             
-            
-            <div class="mt-10">
-                <nav role="navigation" aria-label="Pagination Navigation">
-
-        <div class="flex gap-2 items-center justify-between sm:hidden">
-
-                            <span class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-600 bg-white border border-gray-300 cursor-not-allowed leading-5 rounded-md dark:text-gray-300 dark:bg-gray-700 dark:border-gray-600">
-                    &laquo; Previous
-                </span>
-            
-                            <a href="http://localhost/blog?page=2" rel="next" class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-800 bg-white border border-gray-300 leading-5 rounded-md hover:text-gray-700 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-800 transition ease-in-out duration-150 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-200 dark:focus:border-blue-700 dark:active:bg-gray-700 dark:active:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-900 dark:hover:text-gray-200">
-                    Next &raquo;
-                </a>
-            
-        </div>
-
-        <div class="hidden sm:flex-1 sm:flex sm:gap-2 sm:items-center sm:justify-between">
-
-            <div>
-                <p class="text-sm text-gray-700 leading-5 dark:text-gray-600">
+            <div class="mt-10 flex items-center justify-between text-sm text-gray-600">
+                
+                <p>
                     Showing
-                                            <span class="font-medium">1</span>
-                        to
-                        <span class="font-medium">4</span>
-                                        of
-                    <span class="font-medium">12</span>
+                    <span x-text="(currentPage - 1) * perPage + 1"></span>
+                    to
+                    <span x-text="Math.min(currentPage * perPage, posts.length)"></span>
+                    of
+                    <span x-text="posts.length"></span>
                     results
                 </p>
-            </div>
 
-            <div>
-                <span class="inline-flex rtl:flex-row-reverse shadow-sm rounded-md">
+                
+                <div class="flex items-center gap-1">
+                    
+                    <button
+                        @click="prevPage()"
+                        :disabled="currentPage === 1"
+                        :class="currentPage === 1 ? 'opacity-40 cursor-not-allowed' : 'hover:bg-gray-100 cursor-pointer'"
+                        class="w-8 h-8 flex items-center justify-center rounded border transition">
+                        &lt;
+                    </button>
 
                     
-                                            <span aria-disabled="true" aria-label="&amp;laquo; Previous">
-                            <span class="inline-flex items-center px-2 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 cursor-not-allowed rounded-l-md leading-5 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-400" aria-hidden="true">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
-                                </svg>
-                            </span>
-                        </span>
-                    
-                    
-                                            
-                        
-                        
-                                                                                                                        <span aria-current="page">
-                                        <span class="inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-gray-700 bg-gray-200 border border-gray-300 cursor-default leading-5 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-300">1</span>
-                                    </span>
-                                                                                                                                <a href="http://localhost/blog?page=2" class="inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 hover:text-gray-700 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:text-gray-300 dark:active:bg-gray-700 dark:focus:border-blue-800 hover:bg-gray-100 dark:hover:bg-gray-900" aria-label="Go to page 2">
-                                        2
-                                    </a>
-                                                                                                                                <a href="http://localhost/blog?page=3" class="inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 hover:text-gray-700 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:text-gray-300 dark:active:bg-gray-700 dark:focus:border-blue-800 hover:bg-gray-100 dark:hover:bg-gray-900" aria-label="Go to page 3">
-                                        3
-                                    </a>
-                                                                                                        
-                    
-                                            <a href="http://localhost/blog?page=2" rel="next" class="inline-flex items-center px-2 py-2 -ml-px text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-r-md leading-5 hover:text-gray-400 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-500 transition ease-in-out duration-150 dark:bg-gray-800 dark:border-gray-600 dark:active:bg-gray-700 dark:focus:border-blue-800 dark:text-gray-300 dark:hover:bg-gray-900 dark:hover:text-gray-300" aria-label="Next &amp;raquo;">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
-                            </svg>
-                        </a>
-                                    </span>
-            </div>
-        </div>
-    </nav>
+                    <template x-for="page in totalPages" :key="page">
+                        <button
+                            @click="goToPage(page)"
+                            :class="currentPage === page
+                                ? 'bg-gray-800 text-white border-gray-800'
+                                : 'hover:bg-gray-100'"
+                            class="w-8 h-8 flex items-center justify-center rounded border transition"
+                            x-text="page">
+                        </button>
+                    </template>
 
+                    
+                    <button
+                        @click="nextPage()"
+                        :disabled="currentPage === totalPages"
+                        :class="currentPage === totalPages ? 'opacity-40 cursor-not-allowed' : 'hover:bg-gray-100 cursor-pointer'"
+                        class="w-8 h-8 flex items-center justify-center rounded border transition">
+                        &gt;
+                    </button>
+                </div>
             </div>
 
         </div>
+
         
         <aside class="w-full md:w-4/12">
             <h4 class="text-xl font-semibold mb-4 font-['Playfair_Display']">Postingan Terbaru</h4>
@@ -427,6 +279,43 @@
     </div>
 </div>
 
+
+<script>
+    function blogPagination() {
+        return {
+            posts: [{"title":"Penanganan Kayu Pallet ISPM 15 untuk Ekspor Sukses","date":"06 September 2025","day":"06","month":"Sep","image":"images\/blog\/web-1.jpg","excerpt":"Palet kayu yang rusak, terutama yang memiliki paku berkarat, dapat menyebabkan cedera serius bagi pekerja. Palet berat juga bisa menimpa pekerja jika tidak disimpan atau dipindahkan dengan benar.","link":"https:\/\/menarabekasi.netlify.app\/"},{"title":"Pemilihan Jenis Kayu Ekspor Legal \u0026 Standar ISPM 15","date":"15 September 2025","day":"15","month":"Sep","image":"images\/blog\/web-2.jpg","excerpt":"Pemilihan kayu harus mempertimbangkan jenis produk dan negara tujuan. Kayu lunak seperti pine lebih ringan dan ekonomis, sedangkan kayu keras seperti mahoni atau jati lebih awet dan cocok untuk produk premium.","link":"https:\/\/muqniansyah.github.io\/menara-blog\/"},{"title":"Kendala dalam Kerjasama Bisnis dengan Vendor: Tantangan \u0026 Solusi","date":"22 September 2025","day":"22","month":"Sep","image":"images\/blog\/web-3.jpg","excerpt":"Hubungan dengan vendor yang baik dapat membantu perusahaan lebih efisien, mengurangi biaya, serta meningkatkan daya saing di pasar.","link":"https:\/\/menarabekasi.vercel.app\/"},{"title":"Perbedaan Kayu ISPM 15 dan Non ISPM 15","date":"29 September 2025","day":"29","month":"Sep","image":"images\/blog\/web-4.jpg","excerpt":"Setiap kayu yang sudah memenuhi standar ISPM 15 akan diberi tanda khusus berupa logo resmi yang diakui secara global. Dengan adanya sertifikasi ini, kayu jadi aman digunakan untuk ekspor tanpa risiko ditolak di negara tujuan.","link":"https:\/\/blogmenara.pages.dev\/"},{"title":"Panduan Lengkap ISPM 15","date":"06 Oktober 2025","day":"06","month":"Okt","image":"images\/blog\/web-5.jpg","excerpt":"Dalam dunia perdagangan internasional, kayu menjadi salah satu material penting yang sering digunakan untuk kemasan dan pengiriman barang. Namun, tidak semua kayu dapat langsung digunakan untuk ekspor.","link":"https:\/\/menarabekasi-bbeb1.web.app\/"},{"title":"Mengapa Pemilihan Kayu Harus dari Vendor Berlisensi ISPM 15","date":"13 Oktober 2025","day":"13","month":"Okt","image":"images\/blog\/web-6.jpg","excerpt":"Dalam dunia ekspor produk berbahan kayu, pemilihan kayu yang tepat bukan sekadar soal kualitas fisik, tetapi juga kepatuhan terhadap standar internasional.","link":"https:\/\/muqniansyah.codeberg.page\/bekasimenara\/"},{"title":"Langkah Cerdas Riset Vendor Sebelum Kerjasama Bisnis","date":"20 Oktober 2025","day":"20","month":"Okt","image":"images\/blog\/web-7.jpeg","excerpt":"Riset vendor bukan sekadar formalitas. ini adalah investasi waktu dan strategi untuk menghindari masalah di kemudian hari. Dengan memahami profil dan rekam jejak vendor, perusahaan dapat memastikan kerja sama yang aman dan saling menguntungkan.","link":"https:\/\/webmenara.vercel.app\/"},{"title":"Legalitas Ekspor Kayu: Panduan Lengkap Dokumen, Perizinan, dan Sertifikasi SVLK","date":"27 Oktober 2025","day":"27","month":"Okt","image":"images\/blog\/web-8.jpeg","excerpt":"Legalitas ekspor kayu adalah pembuktian bahwa produk kayu yang diekspor berasal dari sumber yang sah dan terverifikasi. Ini berarti kayu tidak berasal dari pembalakan liar.","link":"https:\/\/menaraweb.vercel.app\/"},{"title":"Pembuatan Pallet Kayu Ekspor: Proses dan Standar ISPM 15","date":"03 November 2025","day":"03","month":"Nov","image":"images\/blog\/web-9.jpg","excerpt":"Pallet kayu adalah alas datar yang digunakan untuk menopang, menyusun, dan memindahkan barang dalam proses distribusi dan ekspor.","link":"https:\/\/blogwebmenara.vercel.app\/"},{"title":"Efisiensi Pengiriman dan Pengemasan Kayu Ekspor: Tips Menghemat Biaya \u0026 Waktu","date":"10 November 2025","day":"10","month":"Nov","image":"images\/blog\/web-10.jpg","excerpt":"Dalam dunia ekspor kayu, efisiensi bukan hanya soal kecepatan, tapi juga tentang bagaimana setiap tahap dapat berjalan hemat biaya dan waktu tanpa menurunkan kualitas.","link":"https:\/\/blogbekasimenara.vercel.app\/"},{"title":"Mengenal Kayu Ramah Lingkungan dan Sertifikasi Hijau untuk Ekspor Berkelanjutan","date":"17 November 2025","day":"17","month":"Nov","image":"images\/blog\/web-11.jpg","excerpt":"Kayu ramah lingkungan adalah kayu yang diperoleh melalui proses pengelolaan hutan yang bertanggung jawab. Pohon yang ditebang diganti dengan penanaman kembali.","link":"https:\/\/web-menarabks.vercel.app\/"},{"title":"Digitalisasi \u0026 Inovasi Teknologi Kayu Ekspor","date":"24 November 2025","day":"24","month":"Nov","image":"images\/blog\/web-12.jpg","excerpt":"Kemajuan teknologi tidak hanya berdampak pada manajemen ekspor, tapi juga pada proses pengolahan kayu itu sendiri. Mesin CNC, AI-assisted grading, dan pengeringan otomatis menjadi contoh nyata penerapan inovasi.","link":"https:\/\/menara-bekasiweb.vercel.app\/"}],
+            currentPage: 1,
+            perPage: 4,
+            totalPages: 0,
+
+            init() {
+                this.totalPages = Math.ceil(this.posts.length / this.perPage);
+            },
+
+            currentPagePosts() {
+                const start = (this.currentPage - 1) * this.perPage;
+                return this.posts.slice(start, start + this.perPage);
+            },
+
+            goToPage(page) {
+                this.currentPage = page;
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            },
+
+            prevPage() {
+                if (this.currentPage > 1) this.goToPage(this.currentPage - 1);
+            },
+
+            nextPage() {
+                if (this.currentPage < this.totalPages) this.goToPage(this.currentPage + 1);
+            },
+        };
+    }
+</script>
+
     </main>
 
     <footer class="bg-[#1A1A1A] text-white py-12">
@@ -434,7 +323,7 @@
 
         <!-- LOGO + DESKRIPSI -->
         <div>
-            <img src="/images/logo.png" class="w-16 mb-4 rounded-[50%]">
+            <img src="images/logo.png" class="w-16 mb-4 rounded-[50%]">
             <p class="text-sm text-white/80 font-['Inter'] leading-relaxed">
                 Penyedia kayu berkualitas tinggi dengan proses terstandarisasi untuk kebutuhan industri maupun kebutuhan ekspor.
             </p>

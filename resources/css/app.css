@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
@@ -6,6 +6,48 @@
 @source '../**/*.js';
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans:
+        "Instrument Sans", ui-sans-serif, system-ui, sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+        "Noto Color Emoji";
+}
+
+/* ============================================================
+   FIX SWIPER PRODUK
+   ============================================================ */
+.product-swiper {
+    width: 100%;
+    height: 384px;
+}
+
+.product-swiper .swiper-slide {
+    width: 100%;
+    height: 100%;
+}
+
+.product-swiper .swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 1rem;
+}
+
+/* ============================================================
+   FIX SWIPER TREN TERKINI
+   ============================================================ */
+.recentSwiper {
+    width: 100%;
+    overflow: hidden !important;
+}
+
+.recentSwiper .swiper-wrapper {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: stretch;
+}
+
+.recentSwiper .swiper-slide {
+    height: auto;
+    flex-shrink: 0;
 }

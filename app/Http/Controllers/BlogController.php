@@ -3,24 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Pagination\LengthAwarePaginator;
-use Illuminate\Support\Collection;
 
 class BlogController extends Controller
 {
     public function index(Request $request)
     {
-        // Data artikel
-        $posts = collect([
+        $posts = [
             [
                 "title" => "Penanganan Kayu Pallet ISPM 15 untuk Ekspor Sukses",
                 "date" => "06 September 2025",
                 "day" => "06",
                 "month" => "Sep",
                 "image" => "images/blog/web-1.jpg",
-                "excerpt" => "Palet kayu yang rusak, terutama yang memiliki paku berkarat, 
-                dapat menyebabkan cedera serius bagi pekerja. 
-                Palet berat juga bisa menimpa pekerja jika tidak disimpan atau dipindahkan dengan benar.",
+                "excerpt" => "Palet kayu yang rusak, terutama yang memiliki paku berkarat, dapat menyebabkan cedera serius bagi pekerja. Palet berat juga bisa menimpa pekerja jika tidak disimpan atau dipindahkan dengan benar.",
                 "link" => "https://menarabekasi.netlify.app/"
             ],
             [
@@ -29,9 +24,7 @@ class BlogController extends Controller
                 "day" => "15",
                 "month" => "Sep",
                 "image" => "images/blog/web-2.jpg",
-                "excerpt" => "Pemilihan kayu harus mempertimbangkan jenis produk dan negara tujuan. 
-                Kayu lunak seperti pine lebih ringan dan ekonomis, 
-                sedangkan kayu keras seperti mahoni atau jati lebih awet dan cocok untuk produk premium.",
+                "excerpt" => "Pemilihan kayu harus mempertimbangkan jenis produk dan negara tujuan. Kayu lunak seperti pine lebih ringan dan ekonomis, sedangkan kayu keras seperti mahoni atau jati lebih awet dan cocok untuk produk premium.",
                 "link" => "https://muqniansyah.github.io/menara-blog/"
             ],
             [
@@ -40,8 +33,7 @@ class BlogController extends Controller
                 "day" => "22",
                 "month" => "Sep",
                 "image" => "images/blog/web-3.jpg",
-                "excerpt" => "Hubungan dengan vendor yang baik dapat membantu perusahaan lebih efisien, 
-                mengurangi biaya, serta meningkatkan daya saing di pasar.",
+                "excerpt" => "Hubungan dengan vendor yang baik dapat membantu perusahaan lebih efisien, mengurangi biaya, serta meningkatkan daya saing di pasar.",
                 "link" => "https://menarabekasi.vercel.app/"
             ],
             [
@@ -50,8 +42,7 @@ class BlogController extends Controller
                 "day" => "29",
                 "month" => "Sep",
                 "image" => "images/blog/web-4.jpg",
-                "excerpt" => "Setiap kayu yang sudah memenuhi standar ISPM 15 akan diberi tanda khusus berupa logo resmi yang diakui secara global. 
-                Dengan adanya sertifikasi ini, kayu jadi aman digunakan untuk ekspor tanpa risiko ditolak di negara tujuan.",
+                "excerpt" => "Setiap kayu yang sudah memenuhi standar ISPM 15 akan diberi tanda khusus berupa logo resmi yang diakui secara global. Dengan adanya sertifikasi ini, kayu jadi aman digunakan untuk ekspor tanpa risiko ditolak di negara tujuan.",
                 "link" => "https://blogmenara.pages.dev/"
             ],
             [
@@ -60,8 +51,7 @@ class BlogController extends Controller
                 "day" => "06",
                 "month" => "Okt",
                 "image" => "images/blog/web-5.jpg",
-                "excerpt" => "Dalam dunia perdagangan internasional, kayu menjadi salah satu material penting yang 
-                sering digunakan untuk kemasan dan pengiriman barang. Namun, tidak semua kayu dapat langsung digunakan untuk ekspor.",
+                "excerpt" => "Dalam dunia perdagangan internasional, kayu menjadi salah satu material penting yang sering digunakan untuk kemasan dan pengiriman barang. Namun, tidak semua kayu dapat langsung digunakan untuk ekspor.",
                 "link" => "https://menarabekasi-bbeb1.web.app/"
             ],
             [
@@ -70,9 +60,7 @@ class BlogController extends Controller
                 "day" => "13",
                 "month" => "Okt",
                 "image" => "images/blog/web-6.jpg",
-                "excerpt" => "Dalam dunia ekspor produk berbahan kayu, pemilihan kayu yang tepat bukan sekadar soal kualitas fisik, 
-                tetapi juga kepatuhan terhadap standar internasional. Salah satu standar paling penting adalah 
-                ISPM 15 (International Standards for Phytosanitary Measures No. 15).",
+                "excerpt" => "Dalam dunia ekspor produk berbahan kayu, pemilihan kayu yang tepat bukan sekadar soal kualitas fisik, tetapi juga kepatuhan terhadap standar internasional.",
                 "link" => "https://muqniansyah.codeberg.page/bekasimenara/"
             ],
             [
@@ -81,8 +69,7 @@ class BlogController extends Controller
                 "day" => "20",
                 "month" => "Okt",
                 "image" => "images/blog/web-7.jpeg",
-                "excerpt" => "Riset vendor bukan sekadar formalitas. ini adalah investasi waktu dan strategi untuk menghindari masalah di kemudian hari. 
-                Dengan memahami profil dan rekam jejak vendor, perusahaan dapat memastikan kerja sama yang aman dan saling menguntungkan. ",
+                "excerpt" => "Riset vendor bukan sekadar formalitas. ini adalah investasi waktu dan strategi untuk menghindari masalah di kemudian hari. Dengan memahami profil dan rekam jejak vendor, perusahaan dapat memastikan kerja sama yang aman dan saling menguntungkan.",
                 "link" => "https://webmenara.vercel.app/"
             ],
             [
@@ -91,9 +78,7 @@ class BlogController extends Controller
                 "day" => "27",
                 "month" => "Okt",
                 "image" => "images/blog/web-8.jpeg",
-                "excerpt" => "Legalitas ekspor kayu adalah pembuktian bahwa produk kayu yang diekspor berasal dari sumber yang sah dan terverifikasi. 
-                Ini berarti kayu tidak berasal dari pembalakan liar, 
-                dan proses produksinya telah memenuhi ketentuan hukum yang berlaku di Indonesia.",
+                "excerpt" => "Legalitas ekspor kayu adalah pembuktian bahwa produk kayu yang diekspor berasal dari sumber yang sah dan terverifikasi. Ini berarti kayu tidak berasal dari pembalakan liar.",
                 "link" => "https://menaraweb.vercel.app/"
             ],
             [
@@ -102,10 +87,7 @@ class BlogController extends Controller
                 "day" => "03",
                 "month" => "Nov",
                 "image" => "images/blog/web-9.jpg",
-                "excerpt" => "Pallet kayu adalah alas datar yang digunakan untuk menopang, menyusun, dan 
-                memindahkan barang dalam proses distribusi dan ekspor. Dalam industri logistik, 
-                pallet berfungsi agar barang mudah diangkat dengan forklift, 
-                disusun di dalam kontainer, serta menjaga kestabilan muatan selama pengiriman.",
+                "excerpt" => "Pallet kayu adalah alas datar yang digunakan untuk menopang, menyusun, dan memindahkan barang dalam proses distribusi dan ekspor.",
                 "link" => "https://blogwebmenara.vercel.app/"
             ],
             [
@@ -114,8 +96,7 @@ class BlogController extends Controller
                 "day" => "10",
                 "month" => "Nov",
                 "image" => "images/blog/web-10.jpg",
-                "excerpt" => "Dalam dunia ekspor kayu, efisiensi bukan hanya soal kecepatan, tapi juga tentang bagaimana setiap tahap. 
-                mulai dari penebangan, pengemasan, hingga pengiriman dapat berjalan hemat biaya dan waktu tanpa menurunkan kualitas.",
+                "excerpt" => "Dalam dunia ekspor kayu, efisiensi bukan hanya soal kecepatan, tapi juga tentang bagaimana setiap tahap dapat berjalan hemat biaya dan waktu tanpa menurunkan kualitas.",
                 "link" => "https://blogbekasimenara.vercel.app/"
             ],
             [
@@ -124,9 +105,7 @@ class BlogController extends Controller
                 "day" => "17",
                 "month" => "Nov",
                 "image" => "images/blog/web-11.jpg",
-                "excerpt" => "Kayu ramah lingkungan adalah kayu yang diperoleh melalui proses pengelolaan hutan yang bertanggung jawab. 
-                Pohon yang ditebang diganti dengan penanaman kembali, 
-                habitat alam dijaga, dan proses produksi dilakukan tanpa merusak keseimbangan ekosistem.",
+                "excerpt" => "Kayu ramah lingkungan adalah kayu yang diperoleh melalui proses pengelolaan hutan yang bertanggung jawab. Pohon yang ditebang diganti dengan penanaman kembali.",
                 "link" => "https://web-menarabks.vercel.app/"
             ],
             [
@@ -135,26 +114,12 @@ class BlogController extends Controller
                 "day" => "24",
                 "month" => "Nov",
                 "image" => "images/blog/web-12.jpg",
-                "excerpt" => "Kemajuan teknologi tidak hanya berdampak pada manajemen ekspor, tapi juga pada proses pengolahan kayu itu sendiri. 
-                Mesin CNC (Computer Numerical Control), AI-assisted grading, dan pengeringan otomatis berbasis sensor suhu & 
-                kelembaban menjadi contoh nyata penerapan inovasi.",
+                "excerpt" => "Kemajuan teknologi tidak hanya berdampak pada manajemen ekspor, tapi juga pada proses pengolahan kayu itu sendiri. Mesin CNC, AI-assisted grading, dan pengeringan otomatis menjadi contoh nyata penerapan inovasi.",
                 "link" => "https://menara-bekasiweb.vercel.app/"
             ],
-        ]);
+        ];
 
-        /** PAGINASI MANUAL */
-        $perPage = 4;                                   // jumlah item per halaman
-        $currentPage = $request->input('page', 1);      // halaman saat ini
-        $items = $posts->slice(($currentPage - 1) * $perPage, $perPage)->values();
-
-        $paginatedPosts = new LengthAwarePaginator(
-            $items,                                      // data yang ditampilkan
-            $posts->count(),                             // total semua data
-            $perPage,                                    // jumlah per halaman
-            $currentPage,                                // halaman sekarang
-            ['path' => $request->url()]                  // URL untuk link pagination
-        );
-
-        return view('pages.blog', ['posts' => $paginatedPosts]);
+        // Kirim semua posts ke view — pagination ditangani JS
+        return view('pages.blog', ['posts' => $posts]);
     }
 }

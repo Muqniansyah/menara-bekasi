@@ -1,13 +1,33 @@
+// ============================================================
+// SEMUA IMPORT DI PALING ATAS
+// ============================================================
 import "./bootstrap";
-
-// dari EmailJS dashboard
 import emailjs from "@emailjs/browser";
-emailjs.init("7ZOAwNXpHr-6V93-q");
+import anime from "animejs/lib/anime.es.js";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { gsap } from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+import SplitType from "split-type";
+import Alpine from "alpinejs";
+import Collapse from "@alpinejs/collapse";
+import feather from "feather-icons";
+import Swiper from "swiper/bundle";
+import "swiper/css/bundle";
+import "bootstrap-icons/font/bootstrap-icons.css";
 
+// ============================================================
+// INISIALISASI AWAL
+// ============================================================
+emailjs.init("7ZOAwNXpHr-6V93-q");
+gsap.registerPlugin(ScrollTrigger);
+
+// ============================================================
+// EMAILJS — FORM KONTAK
+// ============================================================
 const form = document.getElementById("kontakForm");
 const notif = document.getElementById("notif");
 
-// pastikan hanya jalan jika form kontak ada
 if (form) {
     form.addEventListener("submit", function (e) {
         e.preventDefault();
@@ -38,34 +58,23 @@ if (form) {
     });
 }
 
-// import anime js versi 4
-import anime from "animejs/lib/anime.es.js";
-
+// ============================================================
 // AOS
-import AOS from "aos";
-import "aos/dist/aos.css";
-
-// GSAP
-import { gsap } from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
-import SplitType from "split-type";
-
-// Daftarkan plugin
-gsap.registerPlugin(ScrollTrigger);
-
-// Inisialisasi AOS
+// ============================================================
 AOS.init({
     duration: 700,
+    once: true,
+    startEvent: "load",
 });
 
 window.addEventListener("load", () => {
     AOS.refresh();
+    AOS.refreshHard();
 });
 
-// bootstrap icons
-import "bootstrap-icons/font/bootstrap-icons.css";
-
-// kontak - modal promo alert (popup muncul hanya 1 kali per 24 jam)
+// ============================================================
+// ALPINE — WHATSAPP PROMO POPUP
+// ============================================================
 window.whatsappPromo = function () {
     return {
         show: false,
@@ -90,10 +99,13 @@ window.whatsappPromo = function () {
     };
 };
 
-// produk
+// ============================================================
+// ALPINE — PRODUCT DETAIL + SWIPER
+// ============================================================
 window.productDetail = function () {
     return {
         activeId: null,
+        produkList: window.dataProduk || [],
 
         active: {
             id: null,
@@ -126,17 +138,30 @@ window.productDetail = function () {
 
             this.$nextTick(() => {
                 setTimeout(() => {
-                    // Pakai bundle — tidak perlu modules: [Navigation]
+                    const wrapper =
+                        this.$refs.mySwiper.querySelector(".swiper-wrapper");
+                    wrapper.innerHTML = "";
+
+                    this.active.images.forEach((src) => {
+                        const slide = document.createElement("div");
+                        slide.className = "swiper-slide";
+                        slide.innerHTML = `<img src="${src}" class="w-full h-full object-cover rounded-2xl shadow-lg border border-gray-200">`;
+                        wrapper.appendChild(slide);
+                    });
+
                     this.swiper = new Swiper(this.$refs.mySwiper, {
                         slidesPerView: 1,
-                        loop: true,
+                        loop: this.active.images.length > 1,
                         navigation: {
                             nextEl: this.$refs.nextBtn,
                             prevEl: this.$refs.prevBtn,
                         },
+                        on: {
+                            slideChange: () => {
+                                this.swiper = this.swiper;
+                            },
+                        },
                     });
-
-                    this.swiper.update();
                 }, 50);
             });
         },
@@ -169,48 +194,20 @@ window.productDetail = function () {
     };
 };
 
-// alpine js
-import Alpine from "alpinejs";
-import Collapse from "@alpinejs/collapse";
-
+// ============================================================
+// ALPINE START
+// ============================================================
 window.Alpine = Alpine;
-
 Alpine.plugin(Collapse);
 Alpine.start();
 
-// animejs jalan setelah Alpine untuk animasi teks header
-document.addEventListener("DOMContentLoaded", () => {
-    const text = document.querySelector(".text-title");
-    if (!text) return;
-
-    text.innerHTML = text.textContent.replace(
-        /\S/g,
-        "<span class='letter'>$&</span>",
-    );
-
-    anime.timeline().add({
-        targets: ".letter",
-        opacity: [0, 1],
-        translateY: [40, 0],
-        delay: anime.stagger(50),
-    });
-});
-
-// feather icons
-import feather from "feather-icons";
-
-document.addEventListener("DOMContentLoaded", () => {
-    feather.replace();
-});
-
-// swiper js — gunakan bundle saja, tidak perlu import Navigation terpisah
-import Swiper from "swiper/bundle";
-import "swiper/css/bundle";
-
+// ============================================================
+// SWIPER — RECENT / TREN TERKINI
+// ============================================================
 document.addEventListener("DOMContentLoaded", () => {
     const swiperEl = document.querySelector(".recentSwiper");
     if (swiperEl) {
-        const recentSwiper = new Swiper(swiperEl, {
+        new Swiper(swiperEl, {
             slidesPerView: 1,
             spaceBetween: 20,
             loop: true,
@@ -227,8 +224,8 @@ document.addEventListener("DOMContentLoaded", () => {
             },
 
             navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
+                nextEl: ".swiper-btn-next",
+                prevEl: ".swiper-btn-prev",
             },
 
             on: {
@@ -271,7 +268,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-// navbar
+// ============================================================
+// NAVBAR
+// ============================================================
 const menuBtn = document.getElementById("menuBtn");
 const closeBtn = document.getElementById("closeBtn");
 const menuOverlay = document.getElementById("menuOverlay");
@@ -297,9 +296,37 @@ window.addEventListener("scroll", () => {
     }
 });
 
-// animasi gsap
+// ============================================================
+// ANIMEJS — ANIMASI TEKS HEADER
+// ============================================================
 document.addEventListener("DOMContentLoaded", () => {
-    // kontak gsap — hanya jalan kalau elemen ada
+    const text = document.querySelector(".text-title");
+    if (!text) return;
+
+    text.innerHTML = text.textContent.replace(
+        /\S/g,
+        "<span class='letter'>$&</span>",
+    );
+
+    anime.timeline().add({
+        targets: ".letter",
+        opacity: [0, 1],
+        translateY: [40, 0],
+        delay: anime.stagger(50),
+    });
+});
+
+// ============================================================
+// FEATHER ICONS
+// ============================================================
+document.addEventListener("DOMContentLoaded", () => {
+    feather.replace();
+});
+
+// ============================================================
+// GSAP ANIMASI
+// ============================================================
+document.addEventListener("DOMContentLoaded", () => {
     if (document.querySelector(".kontak-img")) {
         gsap.to(".kontak-img", {
             y: -20,
@@ -310,7 +337,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // tentang gsap — hanya jalan kalau section #tentang ada
     if (document.querySelector("#tentang")) {
         gsap.to(".tentang .bg-black\\/40, .tentang .bg-\\[\\#C8A27A\\]\\/20", {
             scrollTrigger: {
@@ -334,7 +360,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // animasi header pada pages — hanya jalan kalau #judul ada
     if (document.querySelector("#judul")) {
         const text = new SplitType("#judul", { types: "chars" });
         gsap.set("#judul", { visibility: "visible" });
@@ -348,9 +373,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-// (Scroll Animation + Lightbox) tentang galeri
+// ============================================================
+// GALERI — SCROLL ANIMATION + LIGHTBOX
+// ============================================================
 document.addEventListener("DOMContentLoaded", () => {
-    // animasi scroll gallery
     const items = document.querySelectorAll(".gallery-item");
 
     if (items.length > 0) {
@@ -370,7 +396,6 @@ document.addEventListener("DOMContentLoaded", () => {
         items.forEach((item) => observer.observe(item));
     }
 
-    // lightbox fullscreen — hanya jalan kalau elemen ada
     const images = document.querySelectorAll(".gallery-img");
     const lightbox = document.getElementById("lightbox");
     const lightboxImg = document.getElementById("lightbox-img");

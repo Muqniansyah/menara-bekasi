@@ -2,6 +2,7 @@
 -manage : npm run dev dan php artisan serve.
 - untuk live http : npx serve dist
 - untuk build : npm run build -> php artisan export -> firebase deploy
+ketika npm run build pastikan php artisan serve dalam kondisi hidup
 -jalankan dari awal : 
 1)
 

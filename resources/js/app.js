@@ -61,8 +61,10 @@ if (form) {
 // ============================================================
 // AOS
 // ============================================================
+window.AOS = AOS;
+
 AOS.init({
-    duration: 700,
+    duration: 1000,
     once: true,
     startEvent: "load",
 });
@@ -100,12 +102,13 @@ window.whatsappPromo = function () {
 };
 
 // ============================================================
-// ALPINE — PRODUCT DETAIL + SWIPER
+// ALPINE — PRODUCT DETAIL + CAROUSEL
 // ============================================================
 window.productDetail = function () {
     return {
         activeId: null,
         produkList: window.dataProduk || [],
+        currentSlide: 0,
 
         active: {
             id: null,
@@ -113,62 +116,33 @@ window.productDetail = function () {
             desc: "",
             images: [],
         },
-        swiper: null,
 
         showDetail(data) {
             this.active = data;
             this.activeId = data.id;
-
-            this.$nextTick(() => {
-                this.initSwiper();
-            });
+            this.currentSlide = 0;
 
             setTimeout(() => {
                 document
-                    .querySelector(".product-swiper")
+                    .querySelector(".relative.overflow-hidden.rounded-2xl")
                     ?.scrollIntoView({ behavior: "smooth", block: "center" });
             }, 100);
         },
 
-        initSwiper() {
-            if (this.swiper) {
-                this.swiper.destroy(true, true);
-                this.swiper = null;
+        prevSlide() {
+            if (this.currentSlide > 0) {
+                this.currentSlide--;
+            } else {
+                this.currentSlide = this.active.images.length - 1;
             }
-
-            this.$nextTick(() => {
-                setTimeout(() => {
-                    const wrapper =
-                        this.$refs.mySwiper.querySelector(".swiper-wrapper");
-                    wrapper.innerHTML = "";
-
-                    this.active.images.forEach((src) => {
-                        const slide = document.createElement("div");
-                        slide.className = "swiper-slide";
-                        slide.innerHTML = `<img src="${src}" class="w-full h-full object-cover rounded-2xl shadow-lg border border-gray-200">`;
-                        wrapper.appendChild(slide);
-                    });
-
-                    this.swiper = new Swiper(this.$refs.mySwiper, {
-                        slidesPerView: 1,
-                        loop: this.active.images.length > 1,
-                        navigation: {
-                            nextEl: this.$refs.nextBtn,
-                            prevEl: this.$refs.prevBtn,
-                        },
-                        on: {
-                            slideChange: () => {
-                                this.swiper = this.swiper;
-                            },
-                        },
-                    });
-                }, 50);
-            });
         },
 
-        goTo(i) {
-            if (!this.swiper) return;
-            this.swiper.slideToLoop(i);
+        nextSlide() {
+            if (this.currentSlide < this.active.images.length - 1) {
+                this.currentSlide++;
+            } else {
+                this.currentSlide = 0;
+            }
         },
 
         shareWA() {

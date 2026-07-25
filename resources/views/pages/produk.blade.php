@@ -108,30 +108,32 @@
         </div>
 
         {{-- DETAIL PRODUK + SWIPER --}}
-        <div x-show="active.id" x-transition class="mt-16 bg-white rounded-xl shadow-md p-8 border border-gray-200">
+        <div x-show="active.id" style="display:none" class="mt-16 bg-white rounded-xl shadow-md p-8 border border-gray-200">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
 
-                {{-- SWIPER --}}
+                {{-- CAROUSEL --}}
                 <div class="w-full max-w-[540px] mx-auto md:mx-0">
-                    <div class="relative overflow-hidden rounded-2xl">
-                        <div class="swiper product-swiper" x-ref="mySwiper">
-                            <div class="swiper-wrapper">
-                                {{-- slides di-inject oleh initSwiper() di app.js --}}
-                            </div>
-                        </div>
 
-                        {{-- PREV BUTTON --}}
-                        <div x-ref="prevBtn"
-                            class="product-prev absolute left-3 top-1/2 -translate-y-1/2 z-10
+                    {{-- CAROUSEL CONTAINER --}}
+                    <div class="relative overflow-hidden rounded-2xl h-96">
+                        <template x-for="(img, i) in active.images" :key="img">
+                            <div x-show="currentSlide === i" class="absolute inset-0">
+                                <img :src="img" class="w-full h-full object-cover rounded-2xl shadow-lg border border-gray-200">
+                            </div>
+                        </template>
+
+                        {{-- PREV --}}
+                        <div @click="prevSlide()"
+                            class="absolute left-3 top-1/2 -translate-y-1/2 z-10
                                 w-10 h-10 flex items-center justify-center rounded-full
                                 bg-white shadow-md border border-gray-200
                                 hover:bg-gray-100 cursor-pointer transition">
                             <span class="text-xl font-bold">&lt;</span>
                         </div>
 
-                        {{-- NEXT BUTTON --}}
-                        <div x-ref="nextBtn"
-                            class="product-next absolute right-3 top-1/2 -translate-y-1/2 z-10
+                        {{-- NEXT --}}
+                        <div @click="nextSlide()"
+                            class="absolute right-3 top-1/2 -translate-y-1/2 z-10
                                 w-10 h-10 flex items-center justify-center rounded-full
                                 bg-white shadow-md border border-gray-200
                                 hover:bg-gray-100 cursor-pointer transition">
@@ -143,10 +145,10 @@
                     <div class="flex gap-4 mt-5">
                         <template x-for="(t, i) in active.images" :key="t">
                             <img :src="t"
-                                @click="goTo(i)"
+                                @click="currentSlide = i"
                                 :class="[
                                     'w-20 h-20 rounded-xl object-cover cursor-pointer transition-all duration-300',
-                                    swiper && swiper.realIndex === i
+                                    currentSlide === i
                                         ? 'scale-110 ring-2 ring-blue-500 shadow-lg'
                                         : 'opacity-90 hover:scale-105 hover:shadow-md'
                                 ]">
